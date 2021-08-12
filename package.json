@@ -27,6 +27,7 @@
     "@nestjs/mongoose": "7.0.1",
     "@nestjs/platform-express": "^7.0.0",
     "apollo-server-express": "^2.14.4",
+    "dotenv": "^10.0.0",
     "graphql": "14.5.0",
     "mongodb": "3.5.9",
     "mongoose": "5.7.14",

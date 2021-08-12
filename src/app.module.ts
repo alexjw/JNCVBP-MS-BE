@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { VolunteerModule } from './volunteer/volunteer.module';
+const config = require('../config.js');
 
 @Module({
   imports: [GraphQLModule.forRoot(
@@ -11,7 +12,7 @@ import { VolunteerModule } from './volunteer/volunteer.module';
       autoSchemaFile: true,
       installSubscriptionHandlers: true
     }),
-    MongooseModule.forRoot('mongodb://localhost:27017/jncvbpms'),
+    MongooseModule.forRoot(config.MONGO_DB),
     VolunteerModule],
   controllers: [AppController],
   providers: [AppService]
