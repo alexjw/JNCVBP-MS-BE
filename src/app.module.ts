@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { VolunteerModule } from './volunteer/volunteer.module';
+import { UsersModule } from './users/users.module';
 const config = require('../config.js');
 
 @Module({
@@ -13,7 +14,7 @@ const config = require('../config.js');
       installSubscriptionHandlers: true
     }),
     MongooseModule.forRoot(config.MONGO_DB),
-    VolunteerModule],
+    VolunteerModule, UsersModule],
   controllers: [AppController],
   providers: [AppService]
 })
