@@ -1,4 +1,5 @@
-import { CreateDutyInput } from "src/duty/duty.input";
+import { CreateDutyInput } from '../../duties/dto/create-duty.input';
+
 
 export const duties: CreateDutyInput[] = [
   { name: 'Accidentes de tránsito', description: null, isDeletable: false },

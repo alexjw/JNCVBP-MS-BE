@@ -1,20 +1,20 @@
 import { Injectable } from "@nestjs/common";
 
-import { CreateDutyInput } from "src/duty/duty.input";
-import { Duty } from "src/duty/duty.model";
-import { DutyService } from "src/duty/duty.service";
 
 import { duties } from "./data";
+import { DutiesService } from '../../duties/duties.service';
+import { DutyModel } from '../../duties/entities/duty.entity';
+import { CreateDutyInput } from '../../duties/dto/create-duty.input';
 
 @Injectable()
 export class DutySeederService {
-  constructor(private dutyService: DutyService) { }
+  constructor(private dutyService: DutiesService) { }
 
-  create(): Promise<Duty>[] {
+  create(): Promise<DutyModel>[] {
     return duties.map(async (duty: CreateDutyInput) => {
       return await
         this.dutyService
-          .createDuty(duty)
+          .create(duty)
           .catch(error => Promise.reject(error));
     });
   }
