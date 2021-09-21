@@ -6,6 +6,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 import { VolunteerModule } from './volunteer/volunteer.module';
 import { DutyModule } from './duty/duty.module';
+import { RankModule } from './rank/rank.module';
 
 const config = require('../config.js');
 
@@ -14,6 +15,7 @@ const config = require('../config.js');
     GraphQLModule.forRoot({ autoSchemaFile: true, installSubscriptionHandlers: true }),
     MongooseModule.forRoot(config.MONGO_DB),
     DutyModule,
+    RankModule,
     VolunteerModule
   ],
   controllers: [AppController],
