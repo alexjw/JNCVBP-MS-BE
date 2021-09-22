@@ -4,9 +4,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 
-import { VolunteerModule } from './volunteer/volunteer.module';
 import { UsersModule } from './users/users.module';
 import { DutiesModule } from './duties/duties.module';
+import { VolunteersModule } from './volunteers/volunteers.module';
 
 const config = require('../config.js');
 
@@ -14,9 +14,10 @@ const config = require('../config.js');
   imports: [
     GraphQLModule.forRoot({ autoSchemaFile: true, installSubscriptionHandlers: true }),
     MongooseModule.forRoot(config.MONGO_DB),
-    VolunteerModule,
+    VolunteersModule,
     UsersModule,
-    DutiesModule],
+    DutiesModule,
+    VolunteersModule],
   controllers: [AppController],
   providers: [AppService]
 })

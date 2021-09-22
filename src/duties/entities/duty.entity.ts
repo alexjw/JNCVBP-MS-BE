@@ -1,10 +1,10 @@
-import { ObjectType, Field, Int, ID } from '@nestjs/graphql';
+import { ObjectType, Field } from '@nestjs/graphql';
 import * as mongoose from 'mongoose'
 
 @ObjectType()
 export class Duty {
 
-  @Field(type => ID)
+  @Field()
   id: string;
 
   @Field()

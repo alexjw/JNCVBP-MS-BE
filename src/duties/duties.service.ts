@@ -15,18 +15,18 @@ export class DutiesService {
   }
 
   findAll() {
-    return this.dutyModel.find().exec();
+    return this.dutyModel.find();
   }
 
   findOne(id: string) {
-    return this.dutyModel.findById(id).exec();
+    return this.dutyModel.findById(id);
   }
 
   update(id: string, updateDutyInput: UpdateDutyInput) {
-    return this.dutyModel.updateOne({_id: id}, updateDutyInput);
+    return this.dutyModel.findOneAndUpdate({_id: id}, updateDutyInput);
   }
 
   remove(id: string) {
-    return this.dutyModel.deleteOne({_id: id});
+    return this.dutyModel.findOneAndDelete({_id: id});
   }
 }

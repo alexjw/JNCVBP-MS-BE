@@ -2,20 +2,21 @@ import { ObjectType, Field, Int, ID } from '@nestjs/graphql';
 import * as mongoose from 'mongoose'
 
 @ObjectType()
-export class User {
+export class Volunteer {
 
   @Field()
   id: string;
 
   @Field()
   name: string;
+
 }
 
-export const UserSchema = new mongoose.Schema({
+export const VolunteerSchema = new mongoose.Schema({
   name: String
 }, { timestamps: true });
 
-export class UserModel extends mongoose.Document {
+export class VolunteerModel extends mongoose.Document{
 
   _id: string;
 
