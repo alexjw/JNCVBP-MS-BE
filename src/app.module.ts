@@ -7,6 +7,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
 import { DutiesModule } from './duties/duties.module';
 import { VolunteersModule } from './volunteers/volunteers.module';
+import { ServicesModule } from './services/services.module';
 
 const config = require('../config.js');
 
@@ -17,7 +18,8 @@ const config = require('../config.js');
     VolunteersModule,
     UsersModule,
     DutiesModule,
-    VolunteersModule],
+    VolunteersModule,
+    ServicesModule],
   controllers: [AppController],
   providers: [AppService]
 })
