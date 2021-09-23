@@ -1,20 +1,20 @@
 import { Injectable } from "@nestjs/common";
 
-import { CreateRankInput } from "src/rank/rank.input";
-import { Rank } from "src/rank/rank.model";
-import { RankService } from "src/rank/rank.service";
+import { CreateRankInput } from "src/ranks/dto/create-rank.input";
+import { RankModel } from "src/ranks/entities/rank.entity";
+import { RanksService } from "src/ranks/ranks.service";
 
 import { ranks } from "./data";
 
 @Injectable()
 export class RankSeederService {
-  constructor(private rankService: RankService) { }
+  constructor(private rankService: RanksService) { }
 
-  create(): Promise<Rank>[] {
+  create(): Promise<RankModel>[] {
     return ranks.map(async (rank: CreateRankInput) => {
       return await
         this.rankService
-          .createRank(rank)
+          .create(rank)
           .catch(error => Promise.reject(error));
     });
   }

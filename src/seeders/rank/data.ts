@@ -1,4 +1,4 @@
-import { CreateRankInput } from "src/rank/rank.input";
+import { CreateRankInput } from "src/ranks/dto/create-rank.input";
 
 export const ranks: CreateRankInput[] = [
   { name: 'Capitán', description: null, isDeletable: false },
