@@ -11,22 +11,23 @@ export class ServicesService {
   constructor(@InjectModel('Service') private serviceModel: Model<ServiceModel>) { }
 
   create(createServiceInput: CreateServiceInput) {
+    console.log(createServiceInput);
     return this.serviceModel.create(createServiceInput);
   }
 
   findAll() {
-    return this.serviceModel.find();
+    return this.serviceModel.find().exec();
   }
 
   findOne(id: string) {
-    return this.serviceModel.findById(id);
+    return this.serviceModel.findById(id).exec();
   }
 
   update(id: string, updateServiceInput: UpdateServiceInput) {
-    return this.serviceModel.findOneAndUpdate({_id: id}, updateServiceInput);
+    return this.serviceModel.findOneAndUpdate({_id: id}, { updateServiceInput }).exec();
   }
 
   remove(id: string) {
-    return this.serviceModel.findOneAndDelete({_id: id});
+    return this.serviceModel.findOneAndDelete({_id: id}).exec();
   }
 }
