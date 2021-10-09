@@ -6,7 +6,7 @@ export class CreateServiceInput {
   @Field()
   description: string;
 
-  @Field(() => [serviceVolunteersInput])
+  @Field(() => [serviceVolunteersInput], { defaultValue: [] })
   volunteers: serviceVolunteersInput[]
 
 }
