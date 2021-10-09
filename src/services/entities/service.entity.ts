@@ -17,10 +17,11 @@ export class Service {
 }
 
 export const ServiceSchema = new Schema({
+  _id: { type: Schema.Types.ObjectId, alias: 'id' },
   description: String,
   volunteers: [
     {
-      _id: { type: Schema.Types.ObjectId, ref: 'Volunteer' }
+      _id: { type: Schema.Types.ObjectId, ref: 'Volunteer', alias: 'id' }
     },
   ]
 }, { timestamps: true,  });

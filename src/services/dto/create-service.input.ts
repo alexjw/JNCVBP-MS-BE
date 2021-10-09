@@ -15,6 +15,6 @@ export class CreateServiceInput {
 class serviceVolunteersInput {
 
   @Field()
-  _id: string
+  id: string
 
 }
