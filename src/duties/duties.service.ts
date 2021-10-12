@@ -1,9 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { CreateDutyInput } from './dto/create-duty.input';
-import { UpdateDutyInput } from './dto/update-duty.input';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+
 import { DutyModel } from './entities/duty.entity';
+
+import { CreateDutyInput } from './dto/create-duty.input';
+import { UpdateDutyInput } from './dto/update-duty.input';
+
 
 @Injectable()
 export class DutiesService {
@@ -23,10 +26,10 @@ export class DutiesService {
   }
 
   update(id: string, updateDutyInput: UpdateDutyInput) {
-    return this.dutyModel.findOneAndUpdate({_id: id}, updateDutyInput);
+    return this.dutyModel.findOneAndUpdate({ _id: id }, updateDutyInput);
   }
 
   remove(id: string) {
-    return this.dutyModel.findOneAndDelete({_id: id});
+    return this.dutyModel.findOneAndDelete({ _id: id });
   }
 }
