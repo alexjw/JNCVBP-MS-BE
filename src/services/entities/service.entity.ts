@@ -77,7 +77,7 @@ export const ServiceSchema = new Schema({
   /*officer_in_charge: {
     _id: { type: Schema.Types.ObjectId, ref: 'Volunteer', alias: 'id' }
   },*/
-}, { timestamps: true,  });
+}, { timestamps: true });
 
 export class ServiceModel extends Document {
 

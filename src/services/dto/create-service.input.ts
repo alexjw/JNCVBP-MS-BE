@@ -1,5 +1,4 @@
 import { InputType, Field } from '@nestjs/graphql';
-import { Volunteer } from '../../volunteers/entities/volunteer.entity';
 
 @InputType()
 class serviceVolunteersInput {
