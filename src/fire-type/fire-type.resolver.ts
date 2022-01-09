@@ -19,7 +19,7 @@ export class FireTypeResolver {
   }
 
   @Query(() => FireType, { name: 'fireType' })
-  findOne(@Args('id', { type: () => Int }) id: string) {
+  findOne(@Args('id') id: string) {
     return this.fireTypeService.findOne(id);
   }
 

@@ -10,8 +10,8 @@ export class FireTypeService {
 
   constructor(@InjectModel('FireType') private model: Model<FireTypeModel>) { }
 
-  create(createFireTypeInput: CreateFireTypeInput) {
-    return this.model.create(createFireTypeInput);
+  create(input: CreateFireTypeInput) {
+    return this.model.create(input);
   }
 
   findAll() {

@@ -10,6 +10,7 @@ import { RanksModule } from './ranks/ranks.module';
 import { VolunteersModule } from './volunteers/volunteers.module';
 import { ServicesModule } from './services/services.module';
 import { FireTypeModule } from './fire-type/fire-type.module';
+import { FireCauseModule } from './fire-cause/fire-cause.module';
 
 const config = require('../config.js');
 
@@ -22,7 +23,8 @@ const config = require('../config.js');
     RanksModule,
     ServicesModule,
     VolunteersModule,
-    FireTypeModule],
+    FireTypeModule,
+    FireCauseModule],
   controllers: [AppController],
   providers: [AppService]
 })

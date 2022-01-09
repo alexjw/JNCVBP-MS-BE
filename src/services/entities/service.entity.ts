@@ -1,6 +1,8 @@
 import { ObjectType, Field } from '@nestjs/graphql';
 import { Schema, Document } from 'mongoose';
 import { Volunteer } from '../../volunteers/entities/volunteer.entity';
+import { FireType } from '../../fire-type/entities/fire-type.entity';
+import { FireCause } from '../../fire-cause/entities/fire-cause.entity';
 
 @ObjectType()
 export class Service {
@@ -10,9 +12,6 @@ export class Service {
 
   @Field()
   description: string;
-
-  @Field(() => [Volunteer])
-  volunteers: Volunteer[];
 
   @Field()
   call_time: string;
@@ -48,10 +47,49 @@ export class Service {
   received_by: string;
 
   @Field()
-  crew: string;
+  crew: string;  // Grupo de Guardia
+
+  @Field()
+  officer_in_charge: Volunteer
 
   /*@Field()
-  officer_in_charge: Volunteer*/
+  fire_type: FireType
+
+  @Field()
+  fire_type_total_surface: number;
+
+  @Field()
+  fire_type_burned_surface: number;
+
+  @Field()
+  fire_type_description: string;*/
+
+  @Field()
+  affected_owner: string;
+
+  @Field()
+  affected_owner_description: string;
+
+  /*@Field()
+  possible_cause: FireCause
+
+  @Field()
+  possible_cause_other_description: string;*/
+
+  @Field()
+  proportion: string;
+
+  @Field()
+  fire_class: [string]; // fuego clase
+
+  @Field()
+  magnitude: string; // proporción
+
+  @Field()
+  damage: string; // destrucción
+
+  @Field(() => [Volunteer])
+  volunteers: Volunteer[];
 
 }
 
