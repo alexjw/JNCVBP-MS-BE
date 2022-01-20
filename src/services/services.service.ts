@@ -11,12 +11,11 @@ export class ServicesService {
   constructor(@InjectModel('Service') private model: Model<ServiceModel>) { }
 
   create(createServiceInput: CreateServiceInput) {
-    console.log(createServiceInput);
     return this.model.create(createServiceInput);
   }
 
   findAll() {
-    return this.model.find().exec();
+    return this.model.find();
   }
 
   findOne(id: string) {

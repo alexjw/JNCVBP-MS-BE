@@ -5,6 +5,9 @@ import { Document, Schema } from 'mongoose';
 export class FireCause {
 
   @Field()
+  id: string;
+
+  @Field()
   name: string;
 
 }

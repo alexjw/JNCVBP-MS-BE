@@ -23,7 +23,7 @@ export class VolunteersService {
   }
 
   findMany(ids: string[]) {
-    return this.volunteerModel.find().where('_id').in(ids).exec();
+    return this.volunteerModel.find().where('_id').in(ids);
   }
 
   update(id: string, updateVolunteerInput: UpdateVolunteerInput) {

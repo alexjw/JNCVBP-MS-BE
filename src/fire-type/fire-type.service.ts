@@ -15,18 +15,18 @@ export class FireTypeService {
   }
 
   findAll() {
-    return this.model.find().exec();
+    return this.model.find();
   }
 
   findOne(id: string) {
-    return this.model.findById(id).exec();
+    return this.model.findById(id);
   }
 
   update(id: string, updateFireTypeInput: UpdateFireTypeInput) {
-    return this.model.findOneAndUpdate({_id: id}, { updateFireTypeInput }).exec();
+    return this.model.findOneAndUpdate({_id: id}, { updateFireTypeInput });
   }
 
   remove(id: string) {
-    return this.model.findOneAndDelete({_id: id}).exec();
+    return this.model.findOneAndDelete({_id: id});
   }
 }
