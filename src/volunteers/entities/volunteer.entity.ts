@@ -10,7 +10,7 @@ export class Volunteer {
   @Field({nullable: true})
   _id: string;
 
-  @Field({nullable: true})
+  @Field()
   name: string;
 
 }
