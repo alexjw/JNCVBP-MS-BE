@@ -9,6 +9,38 @@ class serviceVolunteersInput {
 }
 
 @InputType()
+class officerInChargeInput {
+
+  @Field()
+  id: string
+
+}
+
+@InputType()
+class fireTypeInput {
+
+  @Field()
+  id: string
+
+}
+
+@InputType()
+class fireClassInput {
+
+  @Field()
+  id: string
+
+}
+
+@InputType()
+class FireCauseInput {
+
+  @Field()
+  id: string
+
+}
+
+@InputType()
 export class CreateServiceInput {
 
   @Field()
@@ -52,6 +84,42 @@ export class CreateServiceInput {
 
   @Field()
   crew: string;
+
+  @Field(() => officerInChargeInput)
+  officer_in_charge: officerInChargeInput;
+
+  @Field(() => fireTypeInput)
+  fire_type: fireTypeInput;
+
+  @Field()
+  fire_type_total_surface: number;
+
+  @Field()
+  fire_type_burned_surface: number;
+
+  @Field()
+  fire_type_description: string;
+
+  @Field()
+  affected_owner: string;
+
+  @Field()
+  affected_owner_description: string;
+
+  @Field(() => FireCauseInput)
+  possible_cause: FireCauseInput;
+
+  @Field()
+  possible_cause_other_description: string;
+
+  @Field(() => [fireClassInput])
+  fire_class: fireClassInput[];
+
+  @Field()
+  magnitude: string;
+
+  @Field()
+  damage: string;
 
   /*@Field(() => serviceVolunteersInput)
   officer_in_charge: serviceVolunteersInput*/

@@ -3,6 +3,7 @@ import { Schema, Document } from 'mongoose';
 import { Volunteer } from '../../volunteers/entities/volunteer.entity';
 import { FireType } from '../../fire-type/entities/fire-type.entity';
 import { FireCause } from '../../fire-cause/entities/fire-cause.entity';
+import { FireClass } from '../../fire-class/entities/fire-class.entity';
 
 @ObjectType()
 export class Service {
@@ -82,11 +83,11 @@ export class Service {
   @Field({nullable: true})
   possible_cause_other_description: string;
 
-  @Field({nullable: true})
-  proportion: string;
+  /*@Field({nullable: true})
+  proportion: string;*/ // Not used I think
 
-  @Field(() => [String], {nullable: true})
-  fire_class: [string]; // fuego clase
+  @Field(() => [FireClass], {nullable: true})
+  fire_class: [FireClass]; // fuego clase
 
   @Field({nullable: true})
   magnitude: string; // proporción
@@ -101,7 +102,7 @@ export const ServiceSchema = new Schema({
   volunteers: [
     {
       _id: { type: Schema.Types.ObjectId, ref: 'Volunteer' }
-    },
+    }
   ],
   call_time: String,
   departure_time: String,
@@ -130,8 +131,12 @@ export const ServiceSchema = new Schema({
     _id: { type: Schema.Types.ObjectId, ref: 'FireCause' }
   },
   possible_cause_other_description: String,
-  proportion: String,
-  fire_class: {type: [String]},
+  //: String,
+  fire_class: [
+    {
+      _id: { type: Schema.Types.ObjectId, ref: 'FireClass' }
+    }
+  ],
   magnitude: String,
   damage: String
 }, { timestamps: true });
@@ -171,8 +176,8 @@ export class ServiceModel extends Document {
   affected_owner_description: string;
   possible_cause: { _id: string };
   possible_cause_other_description: string;
-  proportion: string;
-  fire_class: string[];
+  //proportion: string;
+  fire_class: { _id: string }[];
   magnitude: string;
   damage: string;
 

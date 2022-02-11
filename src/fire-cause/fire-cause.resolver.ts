@@ -13,7 +13,7 @@ export class FireCauseResolver {
     return this.fireCauseService.create(createFireCauseInput);
   }
 
-  @Query(() => [FireCause], { name: 'fireCause' })
+  @Query(() => [FireCause], { name: 'fireCauses' })
   findAll() {
     return this.fireCauseService.findAll();
   }

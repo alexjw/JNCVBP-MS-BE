@@ -13,7 +13,7 @@ export class FireTypeResolver {
     return this.fireTypeService.create(createFireTypeInput);
   }
 
-  @Query(() => [FireType], { name: 'fireType' })
+  @Query(() => [FireType], { name: 'fireTypes' })
   findAll() {
     return this.fireTypeService.findAll();
   }

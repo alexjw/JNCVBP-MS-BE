@@ -19,7 +19,7 @@ export class FireTypeService {
   }
 
   findOne(id: string) {
-    return this.model.findById(id);
+    return this.model.findById(id).exec();
   }
 
   update(id: string, updateFireTypeInput: UpdateFireTypeInput) {

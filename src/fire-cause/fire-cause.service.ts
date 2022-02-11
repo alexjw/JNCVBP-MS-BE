@@ -22,6 +22,10 @@ export class FireCauseService {
     return this.model.findById(id).exec();
   }
 
+  findMany(ids: string[]) {
+    return this.model.find().where('_id').in(ids).exec();
+  }
+
   update(id: string, updateFireCauseInput: UpdateFireCauseInput) {
     return this.model.findOneAndUpdate({_id: id}, { updateFireCauseInput }).exec();
   }

@@ -15,15 +15,15 @@ export class VolunteersService {
   }
 
   findAll() {
-    return this.volunteerModel.find();
+    return this.volunteerModel.find().exec();
   }
 
   findOne(id: string) {
-    return this.volunteerModel.findById(id);
+    return this.volunteerModel.findById(id).exec();
   }
 
   findMany(ids: string[]) {
-    return this.volunteerModel.find().where('_id').in(ids);
+    return this.volunteerModel.find().where('_id').in(ids).exec();
   }
 
   update(id: string, updateVolunteerInput: UpdateVolunteerInput) {

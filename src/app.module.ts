@@ -11,6 +11,7 @@ import { VolunteersModule } from './volunteers/volunteers.module';
 import { ServicesModule } from './services/services.module';
 import { FireTypeModule } from './fire-type/fire-type.module';
 import { FireCauseModule } from './fire-cause/fire-cause.module';
+import { FireClassModule } from './fire-class/fire-class.module';
 
 const config = require('../config.js');
 
@@ -24,7 +25,8 @@ const config = require('../config.js');
     ServicesModule,
     VolunteersModule,
     FireTypeModule,
-    FireCauseModule],
+    FireCauseModule,
+    FireClassModule],
   controllers: [AppController],
   providers: [AppService]
 })
