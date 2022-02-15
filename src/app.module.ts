@@ -9,6 +9,9 @@ import { DutiesModule } from './duties/duties.module';
 import { RanksModule } from './ranks/ranks.module';
 import { VolunteersModule } from './volunteers/volunteers.module';
 import { ServicesModule } from './services/services.module';
+import { FireTypeModule } from './fire-type/fire-type.module';
+import { FireCauseModule } from './fire-cause/fire-cause.module';
+import { FireClassModule } from './fire-class/fire-class.module';
 
 const config = require('../config.js');
 
@@ -20,7 +23,10 @@ const config = require('../config.js');
     DutiesModule,
     RanksModule,
     ServicesModule,
-    VolunteersModule],
+    VolunteersModule,
+    FireTypeModule,
+    FireCauseModule,
+    FireClassModule],
   controllers: [AppController],
   providers: [AppService]
 })

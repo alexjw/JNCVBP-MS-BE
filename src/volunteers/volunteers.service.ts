@@ -15,11 +15,11 @@ export class VolunteersService {
   }
 
   findAll() {
-    return this.volunteerModel.find();
+    return this.volunteerModel.find().exec();
   }
 
   findOne(id: string) {
-    return this.volunteerModel.findById(id);
+    return this.volunteerModel.findById(id).exec();
   }
 
   findMany(ids: string[]) {

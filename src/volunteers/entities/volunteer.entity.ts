@@ -4,8 +4,11 @@ import * as mongoose from 'mongoose'
 @ObjectType()
 export class Volunteer {
 
-  @Field()
+  @Field({nullable: true})
   id: string;
+
+  @Field({nullable: true})
+  _id: string;
 
   @Field()
   name: string;
