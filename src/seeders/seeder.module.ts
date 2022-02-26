@@ -3,7 +3,11 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
 
 import { DutySeederModule } from "./duty/duties.module";
+import { FireCauseSeederModule } from "./fire-cause/fire-causes.module";
+import { FireClassSeederModule } from "./fire-class/fire-classes.module";
+import { FireTypeSeederModule } from "./fire-type/fire-types.module";
 import { RankSeederModule } from "./rank/ranks.module";
+import { VolunteerSeederModule } from './volunteer/volunteers.module';
 
 import { Seeder } from "./seeder";
 
@@ -14,7 +18,7 @@ const config = require('../../config.js');
     [
       GraphQLModule.forRoot({ autoSchemaFile: true, installSubscriptionHandlers: true }),
       MongooseModule.forRoot(config.MONGO_DB),
-      DutySeederModule, RankSeederModule
+      DutySeederModule, FireCauseSeederModule, FireClassSeederModule, FireTypeSeederModule, RankSeederModule, VolunteerSeederModule
     ],
   providers: [Logger, Seeder],
 })
