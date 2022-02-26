@@ -1,53 +1,15 @@
-import { InputType, Field } from '@nestjs/graphql';
-
-@InputType()
-class serviceVolunteersInput {
-
-  @Field()
-  id: string
-
-}
-
-@InputType()
-class officerInChargeInput {
-
-  @Field()
-  id: string
-
-}
-
-@InputType()
-class fireTypeInput {
-
-  @Field()
-  id: string
-
-}
-
-@InputType()
-class fireClassInput {
-
-  @Field()
-  id: string
-
-}
-
-@InputType()
-class FireCauseInput {
-
-  @Field()
-  id: string
-
-}
+import { InputType, Field } from "@nestjs/graphql";
+import { OnlyIdVolunteerInput } from "../../volunteers/dto/only-id-volunteer.input";
+import { OnlyIdFireTypeInput } from "../../fire-type/dto/only-id-fire-type.input";
+import { OnlyIdFireClassInput } from "../../fire-class/dto/only-id-fire-class.input";
 
 @InputType()
 export class CreateServiceInput {
-
   @Field()
   description: string;
 
-  @Field(() => [serviceVolunteersInput], { defaultValue: [] })
-  volunteers: serviceVolunteersInput[]
+  @Field(() => [OnlyIdVolunteerInput], { defaultValue: [] })
+  volunteers: OnlyIdVolunteerInput[];
 
   @Field()
   call_time: string;
@@ -85,11 +47,11 @@ export class CreateServiceInput {
   @Field()
   crew: string;
 
-  @Field(() => officerInChargeInput)
-  officer_in_charge: officerInChargeInput;
+  @Field(() => OnlyIdVolunteerInput)
+  officer_in_charge: OnlyIdVolunteerInput;
 
-  @Field(() => fireTypeInput)
-  fire_type: fireTypeInput;
+  @Field(() => OnlyIdFireTypeInput)
+  fire_type: OnlyIdFireTypeInput;
 
   @Field()
   fire_type_total_surface: number;
@@ -106,22 +68,18 @@ export class CreateServiceInput {
   @Field()
   affected_owner_description: string;
 
-  @Field(() => FireCauseInput)
-  possible_cause: FireCauseInput;
+  @Field(() => OnlyIdFireClassInput)
+  possible_cause: OnlyIdFireClassInput;
 
   @Field()
   possible_cause_other_description: string;
 
-  @Field(() => [fireClassInput])
-  fire_class: fireClassInput[];
+  @Field(() => [OnlyIdFireClassInput])
+  fire_class: OnlyIdFireClassInput[];
 
   @Field()
   magnitude: string;
 
   @Field()
   damage: string;
-
-  /*@Field(() => serviceVolunteersInput)
-  officer_in_charge: serviceVolunteersInput*/
-
 }
