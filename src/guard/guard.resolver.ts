@@ -38,6 +38,6 @@ export class GuardResolver {
 
   @ResolveField(() => [Volunteer])
   volunteers(@Parent() service: Service): Promise<VolunteerModel[]> {
-    return this.volunteerService.findMany(service.volunteers.map((volunteer) => volunteer.id));
+    return this.volunteerService.findMany(service.volunteers.map((volunteer) => volunteer._id));
   }
 }
