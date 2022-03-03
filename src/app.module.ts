@@ -13,6 +13,7 @@ import { FireTypeModule } from "./fire-type/fire-type.module";
 import { FireCauseModule } from "./fire-cause/fire-cause.module";
 import { FireClassModule } from "./fire-class/fire-class.module";
 import { GuardModule } from "./guard/guard.module";
+import { EventsModule } from "./events/events.module";
 
 const config = require("../config.js");
 
@@ -29,6 +30,7 @@ const config = require("../config.js");
     FireCauseModule,
     FireClassModule,
     GuardModule,
+    EventsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
