@@ -14,6 +14,7 @@ import { FireCauseModule } from "./fire-cause/fire-cause.module";
 import { FireClassModule } from "./fire-class/fire-class.module";
 import { GuardModule } from "./guard/guard.module";
 import { EventsModule } from "./events/events.module";
+import { TrainingsModule } from "./trainings/trainings.module";
 
 const config = require("../config.js");
 
@@ -31,6 +32,7 @@ const config = require("../config.js");
     FireClassModule,
     GuardModule,
     EventsModule,
+    TrainingsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
