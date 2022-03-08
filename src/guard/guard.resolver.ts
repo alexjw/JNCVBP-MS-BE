@@ -4,7 +4,7 @@ import { Guard } from "./entities/guard.entity";
 import { CreateGuardInput } from "./dto/create-guard.input";
 import { UpdateGuardInput } from "./dto/update-guard.input";
 import { Volunteer, VolunteerModel } from "../volunteers/entities/volunteer.entity";
-import { Service } from "../services/entities/service.entity";
+import { ServiceModel } from "../services/entities/service.entity";
 import { VolunteersService } from "../volunteers/volunteers.service";
 
 @Resolver(() => Guard)
@@ -37,7 +37,7 @@ export class GuardResolver {
   }
 
   @ResolveField(() => [Volunteer])
-  volunteers(@Parent() service: Service): Promise<VolunteerModel[]> {
+  volunteers(@Parent() service: ServiceModel): Promise<VolunteerModel[]> {
     return this.volunteerService.findMany(service.volunteers.map((volunteer) => volunteer._id));
   }
 }
