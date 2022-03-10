@@ -1,7 +1,10 @@
-import { InputType, Int, Field } from '@nestjs/graphql';
+import { InputType, Int, Field } from "@nestjs/graphql";
 
 @InputType()
 export class CreateRankInput {
+  @Field({ nullable: true })
+  _id: string;
+
   @Field()
   name: string;
 

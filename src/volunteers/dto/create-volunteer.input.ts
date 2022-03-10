@@ -20,7 +20,7 @@ export class CreateVolunteerInput {
   @Field()
   status: VolunteerStatus;
 
-  @Field()
+  @Field({ nullable: true })
   incorporation_date: Date;
 
   @Field({ nullable: true })

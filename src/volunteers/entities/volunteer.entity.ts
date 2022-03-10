@@ -26,10 +26,10 @@ export class Volunteer {
   @Field({ nullable: true })
   address: string;
 
-  @Field()
+  @Field({ nullable: true })
   incorporation_date: Date;
 
-  @Field()
+  @Field({ nullable: true })
   birth_date: Date;
 
   // references
@@ -42,7 +42,7 @@ export const VolunteerSchema = new Schema(
     name: String,
     code: { type: String, index: true, unique: true },
     address: String,
-    incorporation_date: Date,
+    incorporation_date: { type: Date, default: new Date() },
     blood_type: { type: Number, default: 0 },
     status: Number,
     birth_date: Date,
