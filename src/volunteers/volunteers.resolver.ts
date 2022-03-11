@@ -27,7 +27,6 @@ export class VolunteersResolver {
 
   @Mutation(() => Volunteer, { name: "updateVolunteer" })
   updateVolunteer(@Args("updateVolunteerInput") updateVolunteerInput: UpdateVolunteerInput) {
-    console.log(updateVolunteerInput);
     return this.volunteersService.update(updateVolunteerInput.id, updateVolunteerInput);
   }
 

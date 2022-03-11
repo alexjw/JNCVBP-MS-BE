@@ -8,14 +8,12 @@ import { volunteers } from "./data";
 
 @Injectable()
 export class VolunteerSeederService {
-  constructor(private rankService: VolunteersService) { }
+  constructor(private volunteerService: VolunteersService) {}
 
-  create(): Promise<VolunteerModel>[] {
-    return volunteers.map(async (rank: CreateVolunteerInput) => {
-      return await
-        this.rankService
-          .create(rank)
-          .catch(error => Promise.reject(error));
+  create(rank_id): Promise<VolunteerModel>[] {
+    return volunteers.map(async (volunteer: CreateVolunteerInput) => {
+      volunteer.rank = { _id: rank_id };
+      return await this.volunteerService.create(volunteer).catch((error) => Promise.reject(error));
     });
   }
 }

@@ -8,29 +8,4 @@ import { VolunteerStatus } from "src/custom_types/volunteer_status";
 export class UpdateVolunteerInput extends PartialType(CreateVolunteerInput) {
   @Field()
   id: string;
-
-  @Field()
-  name: string;
-
-  @Field()
-  code: string;
-
-  @Field({ nullable: true })
-  address: string;
-
-  @Field()
-  blood_type: BloodType;
-
-  @Field()
-  status: VolunteerStatus;
-
-  @Field()
-  incorporation_date: Date;
-
-  @Field({ nullable: true })
-  birth_date: Date;
-
-  // references
-  @Field(() => OnlyIdTypeInput)
-  rank: OnlyIdTypeInput;
 }

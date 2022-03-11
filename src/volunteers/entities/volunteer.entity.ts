@@ -1,6 +1,8 @@
 import { ObjectType, Field } from "@nestjs/graphql";
-import { Prop } from "@nestjs/mongoose";
+import { isEnumType } from "graphql";
 import { Document, Schema } from "mongoose";
+import { BloodType } from "src/custom_types/blood_type";
+import { VolunteerStatus } from "src/custom_types/volunteer_status";
 import { Rank } from "src/ranks/entities/rank.entity";
 
 @ObjectType()
@@ -18,10 +20,10 @@ export class Volunteer {
   code: string;
 
   @Field({ nullable: true })
-  blood_type: number;
+  blood_type: string;
 
   @Field({ nullable: true })
-  status: number;
+  status: string;
 
   @Field({ nullable: true })
   address: string;
@@ -43,8 +45,8 @@ export const VolunteerSchema = new Schema(
     code: { type: String, index: true, unique: true },
     address: String,
     incorporation_date: { type: Date, default: new Date() },
-    blood_type: { type: Number, default: 0 },
-    status: { type: Number, default: 1 },
+    blood_type: { type: String, default: BloodType.NotSet },
+    status: { type: String, default: VolunteerStatus.Active },
     birth_date: Date,
     rank: {
       _id: { type: Schema.Types.ObjectId, ref: "Rank" },
@@ -58,8 +60,8 @@ export class VolunteerModel extends Document {
   name: string;
   code: string;
   address: string;
-  blood_type: number;
-  status: number;
+  blood_type: string;
+  status: string;
   incorporation_date: Date;
   birth_date: Date;
   rank: { _id: string };

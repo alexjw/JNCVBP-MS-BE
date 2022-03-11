@@ -1,5 +1,5 @@
-export const enum VolunteerStatus {
-  Inactive = 0,
-  Active = 1,
-  Deceased = 2,
+export enum VolunteerStatus {
+  Inactive = "Inactive",
+  Active = "Active",
+  Deceased = "Decesaed",
 }
