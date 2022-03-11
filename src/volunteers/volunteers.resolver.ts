@@ -38,6 +38,6 @@ export class VolunteersResolver {
 
   @ResolveField(() => Rank)
   rank(@Parent() volunteer: VolunteerModel): Promise<RankModel | null> {
-    return this.rankService.findOne(volunteer.rank?._id);
+    return this.rankService.findOne(volunteer.rank?.id);
   }
 }

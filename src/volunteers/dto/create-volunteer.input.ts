@@ -17,7 +17,7 @@ export class CreateVolunteerInput {
   @Field({ nullable: true })
   blood_type: BloodType;
 
-  @Field()
+  @Field({ nullable: true })
   status: VolunteerStatus;
 
   @Field({ nullable: true })
@@ -27,6 +27,6 @@ export class CreateVolunteerInput {
   birth_date: Date;
 
   // references
-  @Field(() => OnlyIdTypeInput)
+  @Field({ nullable: true })
   rank: OnlyIdTypeInput;
 }
