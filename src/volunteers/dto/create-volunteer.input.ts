@@ -1,4 +1,5 @@
 import { InputType, Field } from "@nestjs/graphql";
+import { IsEnum, IsOptional } from "class-validator";
 import { BloodType } from "src/custom_types/blood_type";
 import { OnlyIdTypeInput } from "src/custom_types/only-id.input";
 import { VolunteerStatus } from "src/custom_types/volunteer_status";
@@ -12,12 +13,17 @@ export class CreateVolunteerInput {
   code: string;
 
   @Field({ nullable: true })
+  @IsOptional()
   address: string;
 
   @Field({ nullable: true })
+  @IsOptional()
+  @IsEnum(BloodType)
   blood_type: BloodType;
 
   @Field({ nullable: true })
+  @IsOptional()
+  @IsEnum(VolunteerStatus)
   status: VolunteerStatus;
 
   @Field({ nullable: true })
