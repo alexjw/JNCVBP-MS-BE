@@ -49,7 +49,7 @@ export const VolunteerSchema = new Schema(
     status: { type: String, default: VolunteerStatus.Active },
     birth_date: Date,
     rank: {
-      _id: { type: Schema.Types.ObjectId, ref: "Rank" },
+      id: { type: Schema.Types.ObjectId, ref: "Rank" },
       required: false,
     },
   },
@@ -64,5 +64,5 @@ export class VolunteerModel extends Document {
   status: string;
   incorporation_date: Date;
   birth_date: Date;
-  rank: { _id: string };
+  rank: { id: string };
 }

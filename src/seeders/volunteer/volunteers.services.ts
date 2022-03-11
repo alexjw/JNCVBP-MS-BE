@@ -12,7 +12,7 @@ export class VolunteerSeederService {
 
   create(rank_id): Promise<VolunteerModel>[] {
     return volunteers.map(async (volunteer: CreateVolunteerInput) => {
-      volunteer.rank = { _id: rank_id };
+      volunteer.rank = { id: rank_id };
       return await this.volunteerService.create(volunteer).catch((error) => Promise.reject(error));
     });
   }
