@@ -16,25 +16,30 @@ export class Seeder {
     private readonly fireCauseService: FireCauseSeederService,
     private readonly fireClassService: FireClassSeederService,
     private readonly fireTypeService: FireTypeSeederService,
-    private readonly volunteerService: VolunteerSeederService,
-  ) { }
+    private readonly volunteerService: VolunteerSeederService
+  ) {}
 
   async seed() {
-    await this.seedService(this.rankService.create(), "Ranks");
+    const ranks = this.seedService(this.rankService.create(), "Ranks");
+
     await this.seedService(this.dutyService.create(), "Duties");
     await this.seedService(this.fireCauseService.create(), "Fire Causes");
     await this.seedService(this.fireClassService.create(), "Fire Classes");
     await this.seedService(this.fireTypeService.create(), "Fire Types");
-    await this.seedService(this.volunteerService.create(), "Volunteers");
+
+    // set first rank 'Captain' as volunteers rank
+    ranks.then((ranks) => {
+      this.seedService(this.volunteerService.create(ranks[0].id), "Volunteers");
+    });
   }
 
   async seedService(dataModel, serviceName) {
     return await Promise.all(dataModel)
-      .then(completed => {
+      .then((completed) => {
         this.logger.debug(`Successfuly completed seeding ${serviceName}...`);
-        Promise.resolve(completed);
+        return Promise.resolve(completed);
       })
-      .catch(error => {
+      .catch((error) => {
         Promise.reject(error);
       });
   }
