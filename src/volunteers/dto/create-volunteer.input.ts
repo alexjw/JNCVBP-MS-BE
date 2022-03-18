@@ -33,6 +33,6 @@ export class CreateVolunteerInput {
   birth_date: Date;
 
   // references
-  @Field({ nullable: true })
+  @Field()
   rank: OnlyIdTypeInput;
 }

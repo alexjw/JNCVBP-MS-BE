@@ -35,7 +35,7 @@ export class Volunteer {
   birth_date: Date;
 
   // references
-  @Field(() => Rank, { nullable: true })
+  @Field()
   rank?: Rank;
 }
 
@@ -50,7 +50,6 @@ export const VolunteerSchema = new Schema(
     birth_date: Date,
     rank: {
       id: { type: Schema.Types.ObjectId, ref: "Rank" },
-      required: false,
     },
   },
   { timestamps: true }
