@@ -1,6 +1,7 @@
 import { ObjectType, Field, Int } from "@nestjs/graphql";
 import { Volunteer } from "../../volunteers/entities/volunteer.entity";
 import { Document, Schema } from "mongoose";
+import { ObjectId } from "mongodb";
 
 @ObjectType()
 export class Training {
@@ -31,8 +32,8 @@ export const TrainingSchema = new Schema(
 );
 
 export class TrainingModel extends Document {
-  _id: string;
+  _id: ObjectId;
   description: string;
   date: Date;
-  volunteers: { _id: string }[];
+  volunteers: { _id: ObjectId }[];
 }

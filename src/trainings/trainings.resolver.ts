@@ -37,6 +37,6 @@ export class TrainingsResolver {
 
   @ResolveField(() => [Volunteer])
   volunteers(@Parent() training: TrainingModel): Promise<VolunteerModel[]> {
-    return this.volunteerService.findMany(training.volunteers.map((volunteer) => volunteer._id));
+    return this.volunteerService.findMany(training.volunteers.map((volunteer) => volunteer._id.toString()));
   }
 }

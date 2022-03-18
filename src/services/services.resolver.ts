@@ -49,26 +49,26 @@ export class ServicesResolver {
 
   @ResolveField(() => [Volunteer])
   volunteers(@Parent() service: ServiceModel): Promise<VolunteerModel[]> {
-    return this.volunteerService.findMany(service.volunteers.map((volunteer) => volunteer._id));
+    return this.volunteerService.findMany(service.volunteers.map((volunteer) => volunteer._id.toString()));
   }
 
   @ResolveField(() => Volunteer)
   officer_in_charge(@Parent() service: ServiceModel): Promise<VolunteerModel | null> {
-    return this.volunteerService.findOne(service.officer_in_charge?._id);
+    return this.volunteerService.findOne(service.officer_in_charge?._id.toString());
   }
 
   @ResolveField(() => FireType)
   fire_type(@Parent() service: ServiceModel): Promise<FireTypeModel | null> {
-    return this.fireTypeService.findOne(service.fire_type?._id);
+    return this.fireTypeService.findOne(service.fire_type?._id.toString());
   }
 
   @ResolveField(() => FireCause)
   possible_cause(@Parent() service: ServiceModel): Promise<FireCauseModel | null> {
-    return this.fireCauseService.findOne(service.possible_cause?._id);
+    return this.fireCauseService.findOne(service.possible_cause?._id.toString());
   }
 
   @ResolveField(() => FireClass)
   fire_class(@Parent() service: ServiceModel) {
-    return this.fireCauseService.findMany(service.fire_class.map((fireClass) => fireClass._id));
+    return this.fireCauseService.findMany(service.fire_class.map((fireClass) => fireClass._id.toString()));
   }
 }
