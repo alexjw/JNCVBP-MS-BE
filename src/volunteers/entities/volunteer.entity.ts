@@ -67,5 +67,5 @@ export class VolunteerModel extends Document {
   status: string;
   incorporation_date: Date;
   birth_date: Date;
-  rank: { id: string };
+  rank: { id: string }; // todo Check this
 }
