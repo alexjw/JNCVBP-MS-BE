@@ -1,5 +1,6 @@
 import { ObjectType, Field, Int } from "@nestjs/graphql";
 import { Document, Schema } from "mongoose";
+import { ObjectId } from "mongodb";
 
 @ObjectType()
 export class FireType {
@@ -21,7 +22,7 @@ export const FireTypeSchema = new Schema(
 );
 
 export class FireTypeModel extends Document {
-  _id: string;
+  _id: ObjectId;
 
   name: string;
 }

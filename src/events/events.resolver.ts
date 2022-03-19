@@ -38,6 +38,6 @@ export class EventsResolver {
 
   @ResolveField(() => Volunteer)
   created_by(@Parent() event: EventModel): Promise<VolunteerModel | null> {
-    return this.volunteerService.findOne(event.created_by?._id);
+    return this.volunteerService.findOne(event.created_by?._id?.toString());
   }
 }

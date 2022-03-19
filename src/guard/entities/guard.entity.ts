@@ -1,6 +1,7 @@
 import { ObjectType, Field, Int, GraphQLTimestamp } from "@nestjs/graphql";
 import { Volunteer } from "../../volunteers/entities/volunteer.entity";
 import { Document, Schema } from "mongoose";
+import { ObjectId } from "mongodb";
 
 @ObjectType()
 export class Guard {
@@ -31,8 +32,8 @@ export const GuardSchema = new Schema(
 );
 
 export class GuardModel extends Document {
-  _id: string;
+  _id: ObjectId;
   start_time: number;
   end_time: number;
-  volunteers: { _id: string }[];
+  volunteers: { _id: ObjectId }[];
 }

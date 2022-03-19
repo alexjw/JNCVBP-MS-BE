@@ -1,6 +1,7 @@
 import { ObjectType, Field } from "@nestjs/graphql";
 import { Volunteer } from "../../volunteers/entities/volunteer.entity";
 import { Document, Schema } from "mongoose";
+import { ObjectId } from "mongodb";
 
 @ObjectType()
 export class Event {
@@ -26,9 +27,9 @@ export const EventSchema = new Schema({
 });
 
 export class EventModel extends Document {
-  _id: string;
+  _id: ObjectId;
 
   description: string;
 
-  created_by?: { _id: string };
+  created_by?: { _id: ObjectId };
 }

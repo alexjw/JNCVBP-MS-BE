@@ -1,4 +1,6 @@
-import { ObjectType, Field } from "@nestjs/graphql";
+import { ObjectType, Field, Int, ID } from "@nestjs/graphql";
+import * as mongoose from "mongoose";
+import { ObjectId } from "mongodb";
 import { isEnumType } from "graphql";
 import { Document, Schema } from "mongoose";
 import { BloodType } from "src/custom_types/blood_type";
@@ -56,6 +58,7 @@ export const VolunteerSchema = new Schema(
 );
 
 export class VolunteerModel extends Document {
+  _id: ObjectId;
   name: string;
   code: string;
   address: string;
@@ -63,5 +66,5 @@ export class VolunteerModel extends Document {
   status: string;
   incorporation_date: Date;
   birth_date: Date;
-  rank: { id: string };
+  rank: { id: string }; // todo Check this
 }
