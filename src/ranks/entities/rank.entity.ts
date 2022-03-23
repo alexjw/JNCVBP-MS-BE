@@ -1,9 +1,8 @@
-import { ObjectType, Field } from '@nestjs/graphql';
-import * as mongoose from 'mongoose'
+import { ObjectType, Field } from "@nestjs/graphql";
+import { Document, Schema } from "mongoose";
 
 @ObjectType()
 export class Rank {
-
   @Field()
   id: string;
 
@@ -17,18 +16,18 @@ export class Rank {
   description: string;
 }
 
-export const RankSchema = new mongoose.Schema({
-  name: String,
-  description: String,
-  isDeletable: Boolean
-}, { timestamps: true });
+export const RankSchema = new Schema(
+  {
+    name: { type: String, index: true, unique: true },
+    description: String,
+    isDeletable: { type: Boolean, default: true },
+  },
+  { timestamps: true }
+);
 
-export class RankModel extends mongoose.Document {
+export class RankModel extends Document {
   _id: string;
-
   name: string;
-
   description: string;
-
   isDeletable: boolean;
 }

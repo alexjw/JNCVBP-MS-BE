@@ -1,9 +1,8 @@
-import { ObjectType, Field } from '@nestjs/graphql';
-import * as mongoose from 'mongoose'
+import { ObjectType, Field } from "@nestjs/graphql";
+import { Document, Schema } from "mongoose";
 
 @ObjectType()
 export class Duty {
-
   @Field()
   id: string;
 
@@ -15,22 +14,20 @@ export class Duty {
 
   @Field({ nullable: true })
   description: string;
-
 }
 
-export const DutySchema = new mongoose.Schema({
-  name: String,
-  description: String,
-  isDeletable: Boolean
-}, { timestamps: true });
+export const DutySchema = new Schema(
+  {
+    name: { type: String, index: true, unique: true },
+    description: String,
+    isDeletable: { type: Boolean, default: true },
+  },
+  { timestamps: true }
+);
 
-export class DutyModel extends mongoose.Document {
-
+export class DutyModel extends Document {
   _id: string;
-
   name: string;
-
   description: string;
-
   isDeletable: boolean;
 }
