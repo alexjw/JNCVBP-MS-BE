@@ -16,6 +16,7 @@ import { GuardModule } from "./guard/guard.module";
 import { EventsModule } from "./events/events.module";
 import { TrainingsModule } from "./trainings/trainings.module";
 import { CoursesModule } from "./courses/courses.module";
+import { AuthModule } from "./auth/auth.module";
 
 const config = require("../config.js");
 
@@ -35,6 +36,7 @@ const config = require("../config.js");
     EventsModule,
     TrainingsModule,
     CoursesModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
