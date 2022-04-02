@@ -29,7 +29,7 @@ export class CoursesService {
   }
 
   update(id: string, updateCourseInput: UpdateCourseInput) {
-    return this.model.findOneAndUpdate({ _id: id }, { updateCourseInput }).exec();
+    return this.model.findOneAndUpdate({ _id: id }, updateCourseInput);
   }
 
   remove(id: string) {
