@@ -35,5 +35,5 @@ export class TrainingModel extends Document {
   _id: ObjectId;
   description: string;
   date: Date;
-  volunteers: { _id: ObjectId }[];
+  volunteers: { _id: string }[];
 }

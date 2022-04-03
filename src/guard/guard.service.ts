@@ -22,7 +22,7 @@ export class GuardService {
   }
 
   update(id: string, updateGuardInput: UpdateGuardInput) {
-    return this.model.findOneAndUpdate({ _id: id }, { updateGuardInput }).exec();
+    return this.model.findOneAndUpdate({ _id: id }, updateGuardInput);
   }
 
   remove(id: string) {

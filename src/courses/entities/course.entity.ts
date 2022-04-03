@@ -48,5 +48,5 @@ export class CourseModel extends Document {
   description: string;
   date: Date;
   score: string;
-  details: { score: string; volunteer: { _id: ObjectId } }[];
+  details: { score: string; volunteer: { _id: string } }[];
 }

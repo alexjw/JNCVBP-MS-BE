@@ -35,5 +35,5 @@ export class GuardModel extends Document {
   _id: ObjectId;
   start_time: number;
   end_time: number;
-  volunteers: { _id: ObjectId }[];
+  volunteers: { _id: string }[];
 }

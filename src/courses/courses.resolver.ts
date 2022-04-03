@@ -44,7 +44,7 @@ export class CoursesResolver {
           const x = new CourseDetail();
           x.score = detail.score;
           // @ts-ignore
-          x.volunteer = res.find((volunteer) => detail.volunteer._id.toString() === detail.volunteer?._id.toString());
+          x.volunteer = res.find((volunteer) => detail.volunteer._id.toString() === volunteer._id.toString());
           result.push(x);
         });
         return result;
