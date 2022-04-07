@@ -6,6 +6,9 @@ import { OnlyIdFireClassInput } from "../../fire-class/dto/only-id-fire-class.in
 @InputType()
 export class CreateServiceInput {
   @Field()
+  type: string;
+
+  @Field()
   description: string;
 
   @Field(() => [OnlyIdVolunteerInput], { defaultValue: [] })

@@ -69,6 +69,6 @@ export class ServicesResolver {
 
   @ResolveField(() => FireClass)
   fire_class(@Parent() service: ServiceModel) {
-    return this.fireCauseService.findMany(service.fire_class.map((fireClass) => fireClass._id.toString()));
+    return this.fireClassService.findMany(service.fire_class.map((fireClass) => fireClass._id.toString()));
   }
 }

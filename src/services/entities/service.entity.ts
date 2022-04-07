@@ -15,6 +15,9 @@ export class Service {
   id: string;
 
   @Field({ nullable: true })
+  type: string;
+
+  @Field({ nullable: true })
   description: string;
 
   @Field(() => [Volunteer], { nullable: true })
@@ -105,6 +108,7 @@ export const ServiceSchema = new Schema(
       },
     ],
     call_time: String,
+    type: String,
     departure_time: String,
     arrival_time: String,
     withdrawal_time: String,
@@ -158,6 +162,7 @@ export class ServiceModel extends Document {
   volunteers: { _id: ObjectId }[];
 
   call_time: string;
+  type: string;
   departure_time: string;
   arrival_time: string;
   withdrawal_time: string;
