@@ -7,12 +7,33 @@ import { FireClass } from "../../fire-class/entities/fire-class.entity";
 import { ObjectId } from "mongodb";
 
 @ObjectType()
+export class Quantity1044 {
+  @Field({ nullable: true })
+  type: string;
+
+  @Field({ nullable: true })
+  quantity: number;
+}
+
+@ObjectType()
+export class ResourceUsed {
+  @Field({ nullable: true })
+  resource: string;
+
+  @Field({ nullable: true })
+  quantity: number;
+}
+
+@ObjectType()
 export class Service {
   @Field({ nullable: true })
   _id: string;
 
   @Field({ nullable: true })
   id: string;
+
+  @Field({ nullable: true })
+  type: string;
 
   @Field({ nullable: true })
   description: string;
@@ -83,9 +104,6 @@ export class Service {
   @Field({ nullable: true })
   possible_cause_other_description: string;
 
-  /*@Field({nullable: true})
-  proportion: string;*/ // Not used I think
-
   @Field(() => [FireClass], { nullable: true })
   fire_class: [FireClass]; // fuego clase
 
@@ -94,17 +112,51 @@ export class Service {
 
   @Field({ nullable: true })
   damage: string; // destrucción
+
+  @Field({ nullable: true })
+  vehicles_used: string;
+
+  @Field({ nullable: true })
+  other_units: string;
+
+  @Field({ nullable: true })
+  other_occurrences: string;
+
+  @Field({ nullable: true })
+  police_force_in_charge: string;
+
+  @Field({ nullable: true })
+  judge_in_charge: string;
+
+  @Field(() => [String], { nullable: true })
+  damage1041: [string];
+
+  @Field(() => [Quantity1044], { nullable: true })
+  quantities1044: [Quantity1044];
+
+  @Field(() => [String], { nullable: true })
+  involved_elements: [string];
+
+  @Field(() => [String], { nullable: true })
+  magnitude1041: [string];
+
+  @Field(() => [ResourceUsed], { nullable: true })
+  resources_used: [ResourceUsed];
+
+  @Field({ nullable: true })
+  rescue_type: string;
 }
 
 export const ServiceSchema = new Schema(
   {
-    description: String,
+    description: String, // Shared with all
     volunteers: [
       {
         _id: { type: Schema.Types.ObjectId, ref: "Volunteer" },
       },
     ],
     call_time: String,
+    type: String, // Shared with all services
     departure_time: String,
     arrival_time: String,
     withdrawal_time: String,
@@ -140,6 +192,31 @@ export const ServiceSchema = new Schema(
     ],
     magnitude: String,
     damage: String,
+    vehicles_used: String,
+    other_units: String,
+    other_occurrences: String,
+    police_force_in_charge: String,
+    judge_in_charge: String,
+
+    // 10.41
+    damage1041: [String],
+    quantities1044: [
+      {
+        type: String,
+        quantity: Number,
+      },
+    ],
+    involved_elements: [String], // Involucrados
+    magnitude1041: [String],
+    resources_used: [
+      {
+        resource: String,
+        quantity: Number,
+      },
+    ],
+
+    // 10.43
+    rescue_type: String,
   },
   { timestamps: true }
 );
@@ -158,6 +235,7 @@ export class ServiceModel extends Document {
   volunteers: { _id: ObjectId }[];
 
   call_time: string;
+  type: string;
   departure_time: string;
   arrival_time: string;
   withdrawal_time: string;
@@ -182,4 +260,17 @@ export class ServiceModel extends Document {
   fire_class: { _id: ObjectId }[];
   magnitude: string;
   damage: string;
+  vehicles_used: string;
+  other_units: string;
+  other_occurrences: string;
+  police_force_in_charge: string;
+  judge_in_charge: string;
+
+  damage1041: string[];
+  quantities1044: { type: string; quantity: number }[];
+  involved_elements: string[];
+  magnitude1041: string[];
+  resources_used: { resource: string; quantity: number }[];
+
+  rescue_type: string;
 }
