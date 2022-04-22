@@ -20,6 +20,11 @@ export class VolunteersResolver {
     return this.volunteersService.findAll();
   }
 
+  @Query(() => [Volunteer])
+  volunteersDisabled() {
+    return this.volunteersService.findAll(true);
+  }
+
   @Query(() => Volunteer, { name: "volunteer" })
   findOne(@Args("id") id: string) {
     return this.volunteersService.findOne(id);

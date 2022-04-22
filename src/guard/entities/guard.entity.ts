@@ -27,6 +27,7 @@ export const GuardSchema = new Schema(
         _id: { type: Schema.Types.ObjectId, ref: "Volunteer" },
       },
     ],
+    disabled: { type: Boolean, default: false },
   },
   { timestamps: true }
 );
@@ -36,4 +37,5 @@ export class GuardModel extends Document {
   start_time: number;
   end_time: number;
   volunteers: { _id: string }[];
+  disabled: boolean;
 }

@@ -1,24 +1,22 @@
-import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Injectable } from "@nestjs/common";
+import { InjectModel } from "@nestjs/mongoose";
+import { Model } from "mongoose";
 
-import { DutyModel } from './entities/duty.entity';
+import { DutyModel } from "./entities/duty.entity";
 
-import { CreateDutyInput } from './dto/create-duty.input';
-import { UpdateDutyInput } from './dto/update-duty.input';
-
+import { CreateDutyInput } from "./dto/create-duty.input";
+import { UpdateDutyInput } from "./dto/update-duty.input";
 
 @Injectable()
 export class DutiesService {
-
-  constructor(@InjectModel('Duty') private dutyModel: Model<DutyModel>) { }
+  constructor(@InjectModel("Duty") private dutyModel: Model<DutyModel>) {}
 
   create(createDutyInput: CreateDutyInput) {
     return this.dutyModel.create(createDutyInput);
   }
 
-  findAll() {
-    return this.dutyModel.find();
+  findAll(disabled = false) {
+    return this.dutyModel.find().where({ disabled });
   }
 
   findOne(id: string) {
@@ -30,6 +28,6 @@ export class DutiesService {
   }
 
   remove(id: string) {
-    return this.dutyModel.findOneAndDelete({ _id: id });
+    return this.dutyModel.findOneAndUpdate({ _id: id }, { disabled: true });
   }
 }

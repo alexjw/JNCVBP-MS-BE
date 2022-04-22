@@ -17,6 +17,7 @@ export class FireType {
 export const FireTypeSchema = new Schema(
   {
     name: String,
+    disabled: { type: Boolean, default: false },
   },
   { timestamps: true }
 );
@@ -25,4 +26,5 @@ export class FireTypeModel extends Document {
   _id: ObjectId;
 
   name: string;
+  disabled: boolean;
 }

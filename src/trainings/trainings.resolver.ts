@@ -20,6 +20,11 @@ export class TrainingsResolver {
     return this.trainingsService.findAll();
   }
 
+  @Query(() => [Training])
+  trainingsDisabled() {
+    return this.trainingsService.findAll(true);
+  }
+
   @Query(() => Training, { name: "training" })
   findOne(@Args("id") id: string) {
     return this.trainingsService.findOne(id);

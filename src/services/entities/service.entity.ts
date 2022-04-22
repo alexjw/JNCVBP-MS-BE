@@ -217,6 +217,7 @@ export const ServiceSchema = new Schema(
 
     // 10.43
     rescue_type: String,
+    disabled: { type: Boolean, default: false },
   },
   { timestamps: true }
 );
@@ -273,4 +274,5 @@ export class ServiceModel extends Document {
   resources_used: { resource: string; quantity: number }[];
 
   rescue_type: string;
+  disabled: boolean;
 }

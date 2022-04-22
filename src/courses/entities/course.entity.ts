@@ -39,6 +39,7 @@ export const CourseSchema = new Schema(
         },
       },
     ],
+    disabled: { type: Boolean, default: false },
   },
   { timestamps: true }
 );
@@ -49,4 +50,5 @@ export class CourseModel extends Document {
   date: Date;
   score: string;
   details: { score: string; volunteer: { _id: string } }[];
+  disabled: boolean;
 }

@@ -13,8 +13,8 @@ export class FireClassService {
     return this.model.create(input);
   }
 
-  findAll() {
-    return this.model.find();
+  findAll(disabled = true) {
+    return this.model.find().where({ disabled });
   }
 
   findOne(id: number) {
@@ -30,6 +30,6 @@ export class FireClassService {
   }
 
   remove(id: string) {
-    return this.model.findOneAndDelete({ _id: id });
+    return this.model.findOneAndUpdate({ _id: id }, { disabled: true });
   }
 }

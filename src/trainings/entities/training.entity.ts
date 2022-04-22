@@ -27,6 +27,7 @@ export const TrainingSchema = new Schema(
         _id: { type: Schema.Types.ObjectId, ref: "Volunteer" },
       },
     ],
+    disabled: { type: Boolean, default: false },
   },
   { timestamps: true }
 );
@@ -36,4 +37,5 @@ export class TrainingModel extends Document {
   description: string;
   date: Date;
   volunteers: { _id: string }[];
+  disabled: boolean;
 }

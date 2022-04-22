@@ -13,8 +13,8 @@ export class GuardService {
     return this.model.create(createGuardInput);
   }
 
-  findAll() {
-    return this.model.find();
+  findAll(disabled = true) {
+    return this.model.find().where({ disabled });
   }
 
   findOne(id: string) {
@@ -26,6 +26,6 @@ export class GuardService {
   }
 
   remove(id: string) {
-    return this.model.findOneAndDelete({ _id: id }).exec();
+    return this.model.findOneAndUpdate({ _id: id }, { disabled: true });
   }
 }

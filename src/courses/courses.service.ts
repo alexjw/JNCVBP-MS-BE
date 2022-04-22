@@ -14,8 +14,8 @@ export class CoursesService {
     return this.model.create(createCourseInput);
   }
 
-  findAll() {
-    return this.model.find(); /*.populate({
+  findAll(disabled: boolean = false) {
+    return this.model.find().where({ disabled }); /*.populate({
       path: 'details',
       populate: {
         path: 'volunteer',
@@ -33,6 +33,6 @@ export class CoursesService {
   }
 
   remove(id: string) {
-    return this.model.findOneAndDelete({ _id: id }).exec();
+    return this.model.findOneAndUpdate({ _id: id }, { disabled: true });
   }
 }

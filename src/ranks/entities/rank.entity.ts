@@ -21,6 +21,7 @@ export const RankSchema = new Schema(
     name: { type: String, index: true, unique: true },
     description: String,
     isDeletable: { type: Boolean, default: true },
+    disabled: { type: Boolean, default: false },
   },
   { timestamps: true }
 );
@@ -30,4 +31,5 @@ export class RankModel extends Document {
   name: string;
   description: string;
   isDeletable: boolean;
+  disabled: boolean;
 }
