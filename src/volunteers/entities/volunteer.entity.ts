@@ -53,6 +53,7 @@ export const VolunteerSchema = new Schema(
     rank: {
       id: { type: Schema.Types.ObjectId, ref: "Rank" },
     },
+    disabled: { type: Boolean, default: false },
   },
   { timestamps: true }
 );
@@ -67,4 +68,5 @@ export class VolunteerModel extends Document {
   incorporation_date: Date;
   birth_date: Date;
   rank: { id: string }; // todo Check this
+  disabled: boolean;
 }

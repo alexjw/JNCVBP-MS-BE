@@ -14,8 +14,8 @@ export class TrainingsService {
     return this.model.create(createTrainingInput);
   }
 
-  findAll() {
-    return this.model.find();
+  findAll(disabled = false) {
+    return this.model.find().where({ disabled });
   }
 
   findOne(id: string) {
@@ -27,6 +27,6 @@ export class TrainingsService {
   }
 
   remove(id: string) {
-    return this.model.findOneAndDelete({ _id: id }).exec();
+    return this.model.findOneAndUpdate({ _id: id }, { disabled: true });
   }
 }

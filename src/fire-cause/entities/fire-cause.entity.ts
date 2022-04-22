@@ -17,6 +17,7 @@ export class FireCause {
 export const FireCauseSchema = new Schema(
   {
     name: String,
+    disabled: { type: Boolean, default: false },
   },
   { timestamps: true }
 );
@@ -24,4 +25,5 @@ export const FireCauseSchema = new Schema(
 export class FireCauseModel extends Document {
   _id: ObjectId;
   name: string;
+  disabled: boolean;
 }

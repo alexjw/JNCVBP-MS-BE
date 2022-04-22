@@ -32,6 +32,11 @@ export class ServicesResolver {
     return this.servicesService.findAll();
   }
 
+  @Query(() => [Service])
+  servicesDisabled() {
+    return this.servicesService.findAll(true);
+  }
+
   @Query(() => Service, { name: "service" })
   findOne(@Args("id") id: string) {
     return this.servicesService.findOne(id);

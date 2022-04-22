@@ -15,8 +15,8 @@ export class RanksService {
     return this.rankModel.create(rankInput);
   }
 
-  findAll() {
-    return this.rankModel.find().exec();
+  findAll(disabled = false) {
+    return this.rankModel.find().where({ disabled });
   }
 
   findOne(id: string) {
@@ -28,6 +28,6 @@ export class RanksService {
   }
 
   remove(id: string) {
-    return this.rankModel.findOneAndDelete({ _id: id });
+    return this.rankModel.findOneAndUpdate({ _id: id }, { disabled: true });
   }
 }

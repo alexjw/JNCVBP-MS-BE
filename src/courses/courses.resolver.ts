@@ -19,6 +19,11 @@ export class CoursesResolver {
     return this.coursesService.findAll();
   }
 
+  @Query(() => [Course])
+  coursesDisabled() {
+    return this.coursesService.findAll(true);
+  }
+
   @Query(() => Course, { name: "course" })
   findOne(@Args("id") id: string) {
     return this.coursesService.findOne(id);
