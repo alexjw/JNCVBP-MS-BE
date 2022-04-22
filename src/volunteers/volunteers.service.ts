@@ -13,7 +13,7 @@ export class VolunteersService {
     return this.volunteerModel.create(createVolunteerInput);
   }
 
-  findAll(disabled = true) {
+  findAll(disabled = false) {
     return this.volunteerModel.find().where({ disabled }).exec();
   }
 

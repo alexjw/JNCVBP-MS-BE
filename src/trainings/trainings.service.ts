@@ -14,7 +14,7 @@ export class TrainingsService {
     return this.model.create(createTrainingInput);
   }
 
-  findAll(disabled = true) {
+  findAll(disabled = false) {
     return this.model.find().where({ disabled });
   }
 

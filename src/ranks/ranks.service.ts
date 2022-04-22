@@ -15,7 +15,7 @@ export class RanksService {
     return this.rankModel.create(rankInput);
   }
 
-  findAll(disabled = true) {
+  findAll(disabled = false) {
     return this.rankModel.find().where({ disabled });
   }
 

@@ -13,7 +13,7 @@ export class FireTypeService {
     return this.model.create(input);
   }
 
-  findAll(disabled = true) {
+  findAll(disabled = false) {
     return this.model.find().where({ disabled });
   }
 

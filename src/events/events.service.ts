@@ -13,7 +13,7 @@ export class EventsService {
     return this.model.create(createEventInput);
   }
 
-  findAll(disabled = true) {
+  findAll(disabled = false) {
     return this.model.find().where({ disabled });
   }
 

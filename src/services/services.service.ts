@@ -13,7 +13,7 @@ export class ServicesService {
     return this.model.create(createServiceInput);
   }
 
-  findAll(disabled = true) {
+  findAll(disabled = false) {
     return this.model.find().where({ disabled });
   }
 

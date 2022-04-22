@@ -13,7 +13,7 @@ export class UsersService {
     return this.userModel.create(createUserInput);
   }
 
-  findAll(disabled = true) {
+  findAll(disabled = false) {
     return this.userModel.find().where({ disabled });
   }
 

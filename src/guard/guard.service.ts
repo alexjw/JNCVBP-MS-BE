@@ -13,7 +13,7 @@ export class GuardService {
     return this.model.create(createGuardInput);
   }
 
-  findAll(disabled = true) {
+  findAll(disabled = false) {
     return this.model.find().where({ disabled });
   }
 
