@@ -3,7 +3,7 @@ import { Document, Schema } from "mongoose";
 import { ObjectId } from "mongodb";
 
 @ObjectType()
-export class FireType {
+export class SubType {
   @Field({ nullable: true })
   id: string;
 
@@ -14,7 +14,7 @@ export class FireType {
   name: string;
 }
 
-export const FireTypeSchema = new Schema(
+export const SubTypeSchema = new Schema(
   {
     name: String,
     disabled: { type: Boolean, default: false },
@@ -22,7 +22,7 @@ export const FireTypeSchema = new Schema(
   { timestamps: true }
 );
 
-export class FireTypeModel extends Document {
+export class SubTypeModel extends Document {
   _id: ObjectId;
 
   name: string;

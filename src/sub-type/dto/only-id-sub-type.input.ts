@@ -1,7 +1,7 @@
 import { Field, InputType } from "@nestjs/graphql";
 
 @InputType()
-export class OnlyIdFireTypeInput {
+export class OnlyIdSubTypeInput {
   @Field()
   _id: string;
 }

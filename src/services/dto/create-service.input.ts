@@ -1,6 +1,6 @@
 import { InputType, Field, ObjectType } from "@nestjs/graphql";
 import { OnlyIdVolunteerInput } from "../../volunteers/dto/only-id-volunteer.input";
-import { OnlyIdFireTypeInput } from "../../fire-type/dto/only-id-fire-type.input";
+import { OnlyIdSubTypeInput } from "../../sub-type/dto/only-id-sub-type.input";
 import { OnlyIdFireClassInput } from "../../fire-class/dto/only-id-fire-class.input";
 import { ResourceUsed } from "../entities/service.entity";
 
@@ -72,8 +72,8 @@ export class CreateServiceInput {
   @Field(() => OnlyIdVolunteerInput, { nullable: true })
   officer_in_charge: OnlyIdVolunteerInput;
 
-  @Field(() => OnlyIdFireTypeInput, { nullable: true })
-  fire_type: OnlyIdFireTypeInput;
+  @Field(() => OnlyIdSubTypeInput, { nullable: true })
+  sub_type: OnlyIdSubTypeInput;
 
   @Field({ nullable: true })
   fire_type_total_surface: number;
