@@ -1,7 +1,7 @@
 import { ObjectType, Field, ID } from "@nestjs/graphql";
 import { Schema, Document } from "mongoose";
 import { Volunteer } from "../../volunteers/entities/volunteer.entity";
-import { FireType } from "../../fire-type/entities/fire-type.entity";
+import { SubType } from "../../sub-type/entities/sub-type.entity";
 import { FireCause } from "../../fire-cause/entities/fire-cause.entity";
 import { FireClass } from "../../fire-class/entities/fire-class.entity";
 import { ObjectId } from "mongodb";
@@ -80,8 +80,8 @@ export class Service {
   @Field(() => Volunteer, { nullable: true })
   officer_in_charge?: Volunteer;
 
-  @Field(() => FireType, { nullable: true })
-  fire_type?: FireType;
+  @Field(() => SubType, { nullable: true })
+  sub_type?: SubType;
 
   @Field({ nullable: true })
   fire_type_total_surface: number;
@@ -172,8 +172,8 @@ export const ServiceSchema = new Schema(
       _id: { type: Schema.Types.ObjectId, ref: "Volunteer" },
       required: false,
     },
-    fire_type: {
-      _id: { type: Schema.Types.ObjectId, ref: "FireType" },
+    sub_type: {
+      _id: { type: Schema.Types.ObjectId, ref: "SubType" },
     },
     fire_type_total_surface: Number,
     fire_type_burned_surface: Number,
@@ -249,7 +249,7 @@ export class ServiceModel extends Document {
   received_by: string;
   crew: string;
   officer_in_charge?: { _id: ObjectId };
-  fire_type?: { _id: ObjectId };
+  sub_type?: { _id: ObjectId };
   fire_type_total_surface: number;
   fire_type_burned_surface: number;
   fire_type_description: string;

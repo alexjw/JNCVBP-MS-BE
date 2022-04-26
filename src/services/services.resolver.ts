@@ -5,8 +5,8 @@ import { CreateServiceInput } from "./dto/create-service.input";
 import { UpdateServiceInput } from "./dto/update-service.input";
 import { VolunteersService } from "../volunteers/volunteers.service";
 import { Volunteer, VolunteerModel } from "../volunteers/entities/volunteer.entity";
-import { FireType, FireTypeModel } from "../fire-type/entities/fire-type.entity";
-import { FireTypeService } from "../fire-type/fire-type.service";
+import { SubType, SubTypeModel } from "../sub-type/entities/sub-type.entity";
+import { SubTypeService } from "../sub-type/sub-type.service";
 import { FireCause, FireCauseModel } from "../fire-cause/entities/fire-cause.entity";
 import { FireCauseService } from "../fire-cause/fire-cause.service";
 import { FireClass } from "../fire-class/entities/fire-class.entity";
@@ -17,7 +17,7 @@ export class ServicesResolver {
   constructor(
     private readonly servicesService: ServicesService,
     private volunteerService: VolunteersService,
-    private fireTypeService: FireTypeService,
+    private subTypeService: SubTypeService,
     private fireCauseService: FireCauseService,
     private fireClassService: FireClassService
   ) {}
@@ -62,9 +62,9 @@ export class ServicesResolver {
     return this.volunteerService.findOne(service.officer_in_charge?._id.toString());
   }
 
-  @ResolveField(() => FireType)
-  fire_type(@Parent() service: ServiceModel): Promise<FireTypeModel | null> {
-    return this.fireTypeService.findOne(service.fire_type?._id.toString());
+  @ResolveField(() => SubType)
+  sub_type(@Parent() service: ServiceModel): Promise<SubTypeModel | null> {
+    return this.subTypeService.findOne(service.sub_type?._id.toString());
   }
 
   @ResolveField(() => FireCause)
