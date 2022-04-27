@@ -10,13 +10,17 @@ export class SubType {
   @Field({ nullable: true })
   _id: string;
 
-  @Field({ nullable: true })
+  @Field({ nullable: false })
   name: string;
+
+  @Field({ nullable: false })
+  code: string;
 }
 
 export const SubTypeSchema = new Schema(
   {
     name: String,
+    code: String,
     disabled: { type: Boolean, default: false },
   },
   { timestamps: true }
@@ -24,7 +28,7 @@ export const SubTypeSchema = new Schema(
 
 export class SubTypeModel extends Document {
   _id: ObjectId;
-
   name: string;
+  code: string;
   disabled: boolean;
 }
