@@ -22,7 +22,7 @@ export class SubTypeService {
   }
 
   update(id: string, updateSubTypeInput: UpdateSubTypeInput) {
-    return this.model.findOneAndUpdate({ _id: id }, { updateSubTypeInput });
+    return this.model.findOneAndUpdate({ _id: id }, updateSubTypeInput);
   }
 
   remove(id: string) {
