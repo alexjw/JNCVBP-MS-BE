@@ -4,4 +4,7 @@ import { InputType, Int, Field } from "@nestjs/graphql";
 export class CreateSubTypeInput {
   @Field()
   name: string;
+
+  @Field()
+  code: string;
 }

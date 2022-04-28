@@ -8,4 +8,7 @@ export class UpdateSubTypeInput extends PartialType(CreateSubTypeInput) {
 
   @Field()
   name: string;
+
+  @Field()
+  code: string;
 }
