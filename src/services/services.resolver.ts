@@ -42,11 +42,10 @@ export class ServicesResolver {
     return this.servicesService.findOne(id);
   }
 
-  @Mutation(() => Service)
+  @Mutation(() => Service, { name: "updateService" })
   updateService(@Args("updateServiceInput") updateServiceInput: UpdateServiceInput) {
     return this.servicesService.update(updateServiceInput.id, updateServiceInput);
   }
-
   @Mutation(() => Service)
   removeService(@Args("id") id: string) {
     return this.servicesService.remove(id);
