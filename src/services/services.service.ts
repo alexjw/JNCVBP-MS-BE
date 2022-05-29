@@ -17,6 +17,15 @@ export class ServicesService {
     return this.model.find().where({ disabled });
   }
 
+  findAllBetween(startDate: Date, endDate: Date) {
+    return this.model.find({
+      date: {
+        $gte: startDate,
+        $lte: endDate,
+      },
+    });
+  }
+
   findOne(id: string) {
     return this.model.findById(id).exec();
   }
