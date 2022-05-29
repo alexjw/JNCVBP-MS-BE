@@ -22,7 +22,7 @@ export class ServicesService {
   }
 
   update(id: string, updateServiceInput: UpdateServiceInput) {
-    return this.model.findOneAndUpdate({ _id: id }, { updateServiceInput }).exec();
+    return this.model.findOneAndUpdate({ _id: id }, updateServiceInput);
   }
 
   remove(id: string) {

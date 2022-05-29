@@ -9,7 +9,7 @@ import { ObjectId } from "mongodb";
 @ObjectType()
 export class Quantity1044 {
   @Field({ nullable: true })
-  type: string;
+  name: string;
 
   @Field({ nullable: true })
   quantity: number;
@@ -31,6 +31,9 @@ export class Service {
 
   @Field({ nullable: true })
   id: string;
+
+  @Field()
+  date: Date;
 
   @Field({ nullable: true })
   type: string;
@@ -155,6 +158,7 @@ export const ServiceSchema = new Schema(
         _id: { type: Schema.Types.ObjectId, ref: "Volunteer" },
       },
     ],
+    date: Date,
     call_time: String,
     type: String, // Shared with all services
     departure_time: String,
@@ -202,7 +206,7 @@ export const ServiceSchema = new Schema(
     damage1041: [String],
     quantities1044: [
       {
-        type: String,
+        name: String,
         quantity: Number,
       },
     ],
@@ -233,8 +237,8 @@ export class ServiceModel extends Document {
 
   description: string;
 
-  volunteers: { _id: ObjectId }[];
-
+  volunteers: { _id: string }[];
+  date: Date;
   call_time: string;
   type: string;
   departure_time: string;
@@ -248,17 +252,17 @@ export class ServiceModel extends Document {
   phone: string;
   received_by: string;
   crew: string;
-  officer_in_charge?: { _id: ObjectId };
-  sub_type?: { _id: ObjectId };
+  officer_in_charge?: { _id: string };
+  sub_type?: { _id: string };
   fire_type_total_surface: number;
   fire_type_burned_surface: number;
   fire_type_description: string;
   affected_owner: string;
   affected_owner_description: string;
-  possible_cause: { _id: ObjectId };
+  possible_cause: { _id: string };
   possible_cause_other_description: string;
   //proportion: string;
-  fire_class: { _id: ObjectId }[];
+  fire_class: { _id: string }[];
   magnitude: string;
   damage: string;
   vehicles_used: string;
@@ -268,7 +272,7 @@ export class ServiceModel extends Document {
   judge_in_charge: string;
 
   damage1041: string[];
-  quantities1044: { type: string; quantity: number }[];
+  quantities1044: { name: string; quantity: number }[];
   involved_elements: string[];
   magnitude1041: string[];
   resources_used: { resource: string; quantity: number }[];
