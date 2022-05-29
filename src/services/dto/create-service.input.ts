@@ -7,7 +7,7 @@ import { ResourceUsed } from "../entities/service.entity";
 @InputType()
 export class Quantity1044Input {
   @Field({ nullable: true })
-  type: string;
+  name: string;
 
   @Field({ nullable: true })
   quantity: number;
@@ -32,6 +32,9 @@ export class CreateServiceInput {
 
   @Field(() => [OnlyIdVolunteerInput], { defaultValue: [] })
   volunteers: OnlyIdVolunteerInput[];
+
+  @Field()
+  date: Date;
 
   @Field({ nullable: true })
   call_time: string;

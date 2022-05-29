@@ -14,7 +14,7 @@ export class SubTypeService {
   }
 
   findAll(disabled = false) {
-    return this.model.find().where({ disabled });
+    return this.model.find().where({ disabled }).sort({ code: 1, name: 1 });
   }
 
   findOne(id: string) {
