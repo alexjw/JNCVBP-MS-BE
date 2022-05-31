@@ -23,6 +23,7 @@ export class ServicesService {
         $gte: startDate,
         $lte: endDate,
       },
+      disabled: false,
     });
   }
 

@@ -32,4 +32,8 @@ export class FireCauseService {
   remove(id: string) {
     return this.model.findOneAndUpdate({ _id: id }, { disabled: true });
   }
+
+  async findAllIncludingDisabled() {
+    return this.model.find();
+  }
 }

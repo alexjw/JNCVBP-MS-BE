@@ -6,8 +6,8 @@ import { Report } from "./entities/report.entity";
 export class ReportsResolver {
   constructor(private readonly reportsService: ReportsService) {}
 
-  @Query(() => [Report])
-  reports(@Args("startDate") startDate: number, @Args("endDate") endDate: number) {
+  @Query(() => Report)
+  report(@Args("startDate") startDate: number, @Args("endDate") endDate: number) {
     return this.reportsService.generate(startDate, endDate);
   }
 }
