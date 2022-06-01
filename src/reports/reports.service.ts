@@ -28,7 +28,7 @@ export class ReportsService {
     let subTypeCountById = Object.entries(subtypesCountMap).map(([id, count]) => ({ id, count }));
     let subTypeCountByName = subTypeCountById.map((row) => ({
       id: row.id,
-      name: subTypes.find((subType) => subType.id === row.id).name,
+      name: subTypes.find((subType) => subType.id.toString() === row.id.toString()).name,
       count: row.count,
     }));
     report.subTypeCount = subTypeCountByName;
@@ -50,20 +50,49 @@ export class ReportsService {
     let possiblecausesCountById = Object.entries(possibleCausesCountMap).map(([id, count]) => ({ id, count }));
     let possiblecausesCountByName = possiblecausesCountById.map((row) => ({
       id: row.id,
-      name: fireCauses.find((fireCause) => fireCause.id === row.id).name,
+      name: fireCauses.find((fireCause) => fireCause.id.toString() === row.id.toString()).name,
       count: row.count,
     }));
     report.possibleCausesCount = possiblecausesCountByName;
 
-    /*let resourcesUsed1040Array = _.flattenDeep(services.filter(service => subTypes.find(subType => subType.id === service.sub_type._id)?.code === CODES.FIRE).map(service => service.resources_used.map(x => Array(x.quantity).fill(x.resource))));
+    let services1040 = services.filter(
+      (service) =>
+        subTypes.find((subType) => subType.id.toString() === service.sub_type._id.toString())?.code === CODES.FIRE
+    );
+    let services1041 = services.filter(
+      (service) =>
+        subTypes.find((subType) => subType.id.toString() === service.sub_type._id.toString())?.code === CODES.ACCIDENT
+    );
+    let services1043 = services.filter(
+      (service) =>
+        subTypes.find((subType) => subType.id.toString() === service.sub_type._id.toString())?.code === CODES.RESCUE
+    );
+
+    report.count1040 = services1040.length;
+    report.count1041 = services1041.length;
+    report.count1043 = services1043.length;
+
+    let resourcesUsed1040Array = _.flattenDeep(
+      services1040.map((service) => service.resources_used.map((x) => Array(x.quantity).fill(x.resource)))
+    );
     let resourcesUsed1040CountMap = _.countBy(resourcesUsed1040Array);
-    let resourcesUsed1040Count = Object.entries(resourcesUsed1040CountMap).map(([name, count]) => ({id: undefined, name, count}));
+    let resourcesUsed1040Count = Object.entries(resourcesUsed1040CountMap).map(([name, count]) => ({
+      id: undefined,
+      name,
+      count,
+    }));
     report.resourcesUsedCount1040 = resourcesUsed1040Count;
 
-    let resourcesUsed1041Array = _.flattenDeep(services.filter(service => subTypes.find(subType => subType.id === service.sub_type._id)?.code === CODES.ACCIDENT).map(service => service.resources_used.map(x => Array(x.quantity).fill(x.resource))));
+    let resourcesUsed1041Array = _.flattenDeep(
+      services1041.map((service) => service.resources_used.map((x) => Array(x.quantity).fill(x.resource)))
+    );
     let resourcesUsed1041CountMap = _.countBy(resourcesUsed1041Array);
-    let resourcesUsed1041Count = Object.entries(resourcesUsed1041CountMap).map(([name, count]) => ({id: undefined, name, count}));
-    report.resourcesUsedCount1041 = resourcesUsed1041Count;*/
+    let resourcesUsed1041Count = Object.entries(resourcesUsed1041CountMap).map(([name, count]) => ({
+      id: undefined,
+      name,
+      count,
+    }));
+    report.resourcesUsedCount1041 = resourcesUsed1041Count;
 
     return report;
   }

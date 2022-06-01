@@ -71,6 +71,15 @@ export class Report {
   @Field(() => [Detail], { nullable: true })
   subTypeCount: Detail[];
 
+  @Field({ nullable: true })
+  count1040: Number;
+
+  @Field({ nullable: true })
+  count1041: Number;
+
+  @Field({ nullable: true })
+  count1043: Number;
+
   @Field(() => [Detail], { nullable: true })
   damageCount: Detail[];
 
@@ -80,9 +89,9 @@ export class Report {
   @Field(() => [Detail], { nullable: true })
   possibleCausesCount: Detail[];
 
-  /*@Field(() => [Detail], { nullable: true })
+  @Field(() => [Detail], { nullable: true })
   resourcesUsedCount1040: Detail[];
 
   @Field(() => [Detail], { nullable: true })
-  resourcesUsedCount1041: Detail[];*/
+  resourcesUsedCount1041: Detail[];
 }
