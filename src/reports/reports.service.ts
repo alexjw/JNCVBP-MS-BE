@@ -74,12 +74,26 @@ export class ReportsService {
     let damageCount = Object.entries(danmgeCountMap).map(([name, count]) => ({ id: name, name, count }));
     report.damageCount = damageCount;
 
-    let servicesDamage1044Array = _.flattenDeep(
+    let servicesQuantity1044Array = _.flattenDeep(
       services1040.map((service) => service.quantities1044.map((x) => Array(x.quantity).fill(x.name)))
     );
-    let danmge1044CountMap = _.countBy(servicesDamage1044Array);
+    let danmge1044CountMap = _.countBy(servicesQuantity1044Array);
     let damage1044Count = Object.entries(danmge1044CountMap).map(([id, count]) => ({ id, name: undefined, count }));
-    report.quantities1044Count = damage1044Count;
+    report.quantities1044Count1040 = damage1044Count;
+
+    servicesQuantity1044Array = _.flattenDeep(
+      services1041.map((service) => service.quantities1044.map((x) => Array(x.quantity).fill(x.name)))
+    );
+    danmge1044CountMap = _.countBy(servicesQuantity1044Array);
+    damage1044Count = Object.entries(danmge1044CountMap).map(([id, count]) => ({ id, name: undefined, count }));
+    report.quantities1044Count1041 = damage1044Count;
+
+    servicesQuantity1044Array = _.flattenDeep(
+      services1043.map((service) => service.quantities1044.map((x) => Array(x.quantity).fill(x.name)))
+    );
+    danmge1044CountMap = _.countBy(servicesQuantity1044Array);
+    damage1044Count = Object.entries(danmge1044CountMap).map(([id, count]) => ({ id, name: undefined, count }));
+    report.quantities1044Count1043 = damage1044Count;
 
     let possibleCausesByIdArray = services.map((service) => service.possible_cause._id);
     let possibleCausesCountMap = _.countBy(possibleCausesByIdArray);
@@ -100,7 +114,7 @@ export class ReportsService {
     );
     let resourcesUsed1040CountMap = _.countBy(resourcesUsed1040Array);
     let resourcesUsed1040Count = Object.entries(resourcesUsed1040CountMap).map(([name, count]) => ({
-      id: undefined,
+      id: name,
       name,
       count,
     }));
@@ -111,7 +125,7 @@ export class ReportsService {
     );
     let resourcesUsed1041CountMap = _.countBy(resourcesUsed1041Array);
     let resourcesUsed1041Count = Object.entries(resourcesUsed1041CountMap).map(([name, count]) => ({
-      id: undefined,
+      id: name,
       name,
       count,
     }));
@@ -125,6 +139,33 @@ export class ReportsService {
       count,
     }));
     report.damage1041Count = servicesDamage1041Count;
+
+    let magnitude1041Array = _.flattenDeep(services1041.map((service) => service.magnitude1041));
+    let magnitude1041CountMap = _.countBy(magnitude1041Array);
+    let magnitude1041Count = Object.entries(magnitude1041CountMap).map(([name, count]) => ({
+      id: name,
+      name,
+      count,
+    }));
+    report.magnitude1041Count = magnitude1041Count;
+
+    let involvedElementsArray = _.flattenDeep(services1041.map((service) => service.involved_elements));
+    let involvedElementsCountMap = _.countBy(involvedElementsArray);
+    let involvedElementsCount = Object.entries(involvedElementsCountMap).map(([name, count]) => ({
+      id: name,
+      name,
+      count,
+    }));
+    report.involvedElementsCount = involvedElementsCount;
+
+    let rescueTypeArray = services1043.map((service) => service.rescue_type);
+    let rescueTypeCountMap = _.countBy(rescueTypeArray);
+    let rescueTypeCount = Object.entries(rescueTypeCountMap).map(([name, count]) => ({
+      id: name,
+      name,
+      count,
+    }));
+    report.rescueTypeCount = rescueTypeCount;
 
     return report;
   }
