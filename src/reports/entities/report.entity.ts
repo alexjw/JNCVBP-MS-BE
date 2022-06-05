@@ -90,7 +90,13 @@ export class Report {
   damageCount: Detail[];
 
   @Field(() => [Detail], { nullable: true })
-  quantities1044Count: Detail[];
+  quantities1044Count1040: Detail[];
+
+  @Field(() => [Detail], { nullable: true })
+  quantities1044Count1041: Detail[];
+
+  @Field(() => [Detail], { nullable: true })
+  quantities1044Count1043: Detail[];
 
   @Field(() => [Detail], { nullable: true })
   possibleCausesCount: Detail[];
@@ -103,4 +109,13 @@ export class Report {
 
   @Field(() => [Detail], { nullable: true })
   damage1041Count: Detail[];
+
+  @Field(() => [Detail], { nullable: true })
+  involvedElementsCount: Detail[];
+
+  @Field(() => [Detail], { nullable: true })
+  magnitude1041Count: Detail[];
+
+  @Field(() => [Detail], { nullable: true })
+  rescueTypeCount: Detail[];
 }
