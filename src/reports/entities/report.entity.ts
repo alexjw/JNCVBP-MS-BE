@@ -68,6 +68,12 @@ export class Report {
   @Field(() => Date, { nullable: true })
   date: Date;
 
+  @Field(() => Date, { nullable: true })
+  startDate: Date;
+
+  @Field(() => Date, { nullable: true })
+  endDate: Date;
+
   @Field(() => [Detail], { nullable: true })
   subTypeCount1040: Detail[];
 

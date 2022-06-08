@@ -35,6 +35,8 @@ export class ReportsService {
 
     const report: Report = new Report();
     report.date = new Date();
+    report.startDate = new Date(startDate);
+    report.endDate = new Date(endDate);
 
     // 1040
     let servicesSubTypeIdArray = services1040.map((service) => service.sub_type._id);
