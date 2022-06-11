@@ -13,8 +13,8 @@ export class EventsService {
     return this.model.create(createEventInput);
   }
 
-  findAll() {
-    return this.model.find();
+  findAll(disabled = false) {
+    return this.model.find().where({ disabled });
   }
 
   findOne(id: string) {
@@ -26,6 +26,6 @@ export class EventsService {
   }
 
   remove(id: string) {
-    return this.model.findOneAndDelete({ _id: id }).exec();
+    return this.model.findOneAndUpdate({ _id: id }, { disabled: true });
   }
 }

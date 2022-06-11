@@ -3,7 +3,7 @@ import { Injectable, Logger } from "@nestjs/common";
 import { DutySeederService } from "./duty/duties.services";
 import { FireCauseSeederService } from "./fire-cause/fire-causes.services";
 import { FireClassSeederService } from "./fire-class/fire-classes.services";
-import { FireTypeSeederService } from "./fire-type/fire-types.services";
+import { SubTypeSeederService } from "./sub-type/sub-types.services";
 import { RankSeederService } from "./rank/ranks.services";
 import { VolunteerSeederService } from "./volunteer/volunteers.services";
 
@@ -15,7 +15,7 @@ export class Seeder {
     private readonly rankService: RankSeederService,
     private readonly fireCauseService: FireCauseSeederService,
     private readonly fireClassService: FireClassSeederService,
-    private readonly fireTypeService: FireTypeSeederService,
+    private readonly subTypeService: SubTypeSeederService,
     private readonly volunteerService: VolunteerSeederService
   ) {}
 
@@ -25,7 +25,7 @@ export class Seeder {
     await this.seedService(this.dutyService.create(), "Duties");
     await this.seedService(this.fireCauseService.create(), "Fire Causes");
     await this.seedService(this.fireClassService.create(), "Fire Classes");
-    await this.seedService(this.fireTypeService.create(), "Fire Types");
+    await this.seedService(this.subTypeService.create(), "Sub Types");
 
     // set first rank 'Captain' as volunteers rank
     ranks.then((ranks) => {

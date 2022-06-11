@@ -9,13 +9,14 @@ import { DutiesModule } from "./duties/duties.module";
 import { RanksModule } from "./ranks/ranks.module";
 import { VolunteersModule } from "./volunteers/volunteers.module";
 import { ServicesModule } from "./services/services.module";
-import { FireTypeModule } from "./fire-type/fire-type.module";
+import { SubTypeModule } from "./sub-type/sub-type.module";
 import { FireCauseModule } from "./fire-cause/fire-cause.module";
 import { FireClassModule } from "./fire-class/fire-class.module";
 import { GuardModule } from "./guard/guard.module";
 import { EventsModule } from "./events/events.module";
 import { TrainingsModule } from "./trainings/trainings.module";
 import { CoursesModule } from "./courses/courses.module";
+import { ReportsModule } from "./reports/reports.module";
 import { AuthModule } from "./auth/auth.module";
 
 const config = require("../config.js");
@@ -29,13 +30,14 @@ const config = require("../config.js");
     RanksModule,
     ServicesModule,
     VolunteersModule,
-    FireTypeModule,
+    SubTypeModule,
     FireCauseModule,
     FireClassModule,
     GuardModule,
     EventsModule,
     TrainingsModule,
     CoursesModule,
+    ReportsModule,
     AuthModule,
   ],
   controllers: [AppController],

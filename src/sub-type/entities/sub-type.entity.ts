@@ -3,26 +3,32 @@ import { Document, Schema } from "mongoose";
 import { ObjectId } from "mongodb";
 
 @ObjectType()
-export class FireType {
+export class SubType {
   @Field({ nullable: true })
   id: string;
 
   @Field({ nullable: true })
   _id: string;
 
-  @Field({ nullable: true })
+  @Field({ nullable: false })
   name: string;
+
+  @Field({ nullable: false })
+  code: string;
 }
 
-export const FireTypeSchema = new Schema(
+export const SubTypeSchema = new Schema(
   {
     name: String,
+    code: String,
+    disabled: { type: Boolean, default: false },
   },
   { timestamps: true }
 );
 
-export class FireTypeModel extends Document {
+export class SubTypeModel extends Document {
   _id: ObjectId;
-
   name: string;
+  code: string;
+  disabled: boolean;
 }

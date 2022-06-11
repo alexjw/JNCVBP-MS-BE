@@ -24,6 +24,7 @@ export const EventSchema = new Schema({
   created_by: {
     _id: { type: Schema.Types.ObjectId, ref: "Volunteer" },
   },
+  disabled: { type: Boolean, default: false },
 });
 
 export class EventModel extends Document {
@@ -32,4 +33,6 @@ export class EventModel extends Document {
   description: string;
 
   created_by?: { _id: ObjectId };
+
+  disabled: boolean;
 }

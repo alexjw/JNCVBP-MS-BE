@@ -21,6 +21,11 @@ export class GuardResolver {
     return this.guardService.findAll();
   }
 
+  @Query(() => [Guard])
+  guardsDisabled() {
+    return this.guardService.findAll(true);
+  }
+
   @Query(() => Guard, { name: "guard" })
   findOne(@Args("id") id: string) {
     return this.guardService.findOne(id);

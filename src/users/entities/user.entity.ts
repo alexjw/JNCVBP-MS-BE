@@ -17,6 +17,7 @@ export const UserSchema = new mongoose.Schema(
   {
     name: String,
     password: String,
+    disabled: { type: Boolean, default: false },
   },
   { timestamps: true }
 );
@@ -26,4 +27,5 @@ export class UserModel extends mongoose.Document {
 
   name: string;
   password: string;
+  disabled: boolean;
 }

@@ -19,6 +19,11 @@ export class CoursesResolver {
     return this.coursesService.findAll();
   }
 
+  @Query(() => [Course])
+  coursesDisabled() {
+    return this.coursesService.findAll(true);
+  }
+
   @Query(() => Course, { name: "course" })
   findOne(@Args("id") id: string) {
     return this.coursesService.findOne(id);
@@ -44,7 +49,7 @@ export class CoursesResolver {
           const x = new CourseDetail();
           x.score = detail.score;
           // @ts-ignore
-          x.volunteer = res.find((volunteer) => detail.volunteer._id.toString() === detail.volunteer?._id.toString());
+          x.volunteer = res.find((volunteer) => detail.volunteer._id.toString() === volunteer._id.toString());
           result.push(x);
         });
         return result;

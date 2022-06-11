@@ -13,8 +13,8 @@ export class GuardService {
     return this.model.create(createGuardInput);
   }
 
-  findAll() {
-    return this.model.find();
+  findAll(disabled = false) {
+    return this.model.find().where({ disabled });
   }
 
   findOne(id: string) {
@@ -22,10 +22,10 @@ export class GuardService {
   }
 
   update(id: string, updateGuardInput: UpdateGuardInput) {
-    return this.model.findOneAndUpdate({ _id: id }, { updateGuardInput }).exec();
+    return this.model.findOneAndUpdate({ _id: id }, updateGuardInput);
   }
 
   remove(id: string) {
-    return this.model.findOneAndDelete({ _id: id }).exec();
+    return this.model.findOneAndUpdate({ _id: id }, { disabled: true });
   }
 }

@@ -21,6 +21,11 @@ export class EventsResolver {
     return this.eventsService.findAll();
   }
 
+  @Query(() => [Event])
+  eventsDisabled() {
+    return this.eventsService.findAll(true);
+  }
+
   @Query(() => Event, { name: "event" })
   findOne(@Args("id") id: string) {
     return this.eventsService.findOne(id);

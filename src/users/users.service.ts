@@ -13,8 +13,8 @@ export class UsersService {
     return this.userModel.create(createUserInput);
   }
 
-  findAll() {
-    return this.userModel.find().exec();
+  findAll(disabled = false) {
+    return this.userModel.find().where({ disabled });
   }
 
   findOne(id: string) {
@@ -26,6 +26,6 @@ export class UsersService {
   }
 
   remove(id: string) {
-    return this.userModel.findOneAndDelete({ _id: id }).exec();
+    return this.userModel.findOneAndUpdate({ _id: id }, { disabled: true }).exec();
   }
 }
