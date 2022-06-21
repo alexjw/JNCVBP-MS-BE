@@ -7,7 +7,16 @@ export class User {
   id: string;
 
   @Field()
-  name: string;
+  firstName: string;
+
+  @Field()
+  lastName: string;
+
+  @Field()
+  username: string;
+
+  @Field()
+  email: string;
 
   @Field()
   password: string;
@@ -15,7 +24,10 @@ export class User {
 
 export const UserSchema = new mongoose.Schema(
   {
-    name: String,
+    firstName: String,
+    lastName: String,
+    username: String,
+    email: String,
     password: String,
     disabled: { type: Boolean, default: false },
   },
@@ -25,7 +37,10 @@ export const UserSchema = new mongoose.Schema(
 export class UserModel extends mongoose.Document {
   _id: string;
 
-  name: string;
+  firstName: string;
+  lastName: string;
+  username: string;
+  email: string;
   password: string;
   disabled: boolean;
 }
