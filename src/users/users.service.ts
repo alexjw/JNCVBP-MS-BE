@@ -22,7 +22,7 @@ export class UsersService {
     return this.userModel.create(newUser);
   }
 
-  async signin(user: User, jwt: JwtService): Promise<any> {
+  /*async signin(user: User, jwt: JwtService): Promise<any> {
     const foundUser = await this.userModel.findOne({ email: user.email }).exec();
     if (foundUser) {
       const { password } = foundUser;
@@ -35,7 +35,7 @@ export class UsersService {
       return new HttpException("Incorrect username or password", HttpStatus.UNAUTHORIZED);
     }
     return new HttpException("Incorrect username or password", HttpStatus.UNAUTHORIZED);
-  }
+  }*/
 
   async findOneByEmail(email) {
     return await this.userModel.findOne({ email }).exec();

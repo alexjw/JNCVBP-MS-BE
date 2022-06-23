@@ -14,14 +14,14 @@ export class AuthService {
     return this.usersService.findOne("623bd054b1af554d7cdbbf64");
   }*/
 
-  async validateUser(username: string, pass: string): Promise<any> {
+  /*async validateUser(username: string, pass: string): Promise<any> {
     const user = await this.usersService.findOneByUsername(username);
     if (user && bcrypt.compare(user.password, pass)) {
       const { password, ...result } = user;
       return result;
     }
     return null;
-  }
+  }*/
 
   async login(user: LoginInput) {
     const theUser = await this.usersService.findOneByUsername(user.username);
