@@ -24,7 +24,7 @@ export class AppResolver {
   }
 
   @UseGuards(GqlAuthGuard)
-  @Query(() => User)
+  @Query(() => User, { nullable: true })
   currentUser() {
     // do some checks
     if (!this.request.req.user?.userId) return undefined;
