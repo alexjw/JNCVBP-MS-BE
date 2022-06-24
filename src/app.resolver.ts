@@ -1,5 +1,5 @@
 import { AuthService } from "./auth/auth.service";
-import { Args, Query, Resolver } from "@nestjs/graphql";
+import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { LoginInput } from "./auth/dto/login.input";
 import { AccessToken } from "./auth/entities/access.token.entity";
 import { User } from "./users/entities/user.entity";
@@ -18,7 +18,7 @@ export class AppResolver {
   ) {}
 
   //@UseGuards(GqlAuthGuard)
-  @Query(() => AccessToken)
+  @Mutation(() => AccessToken)
   login(@Args("loginInput") loginInput: LoginInput) {
     return this.authService.login(loginInput);
   }
@@ -26,8 +26,9 @@ export class AppResolver {
   @UseGuards(GqlAuthGuard)
   @Query(() => User)
   currentUser() {
-    // do some checks checks
-    return this.usersService.findOne(this.request.req.user.userId);
+    // do some checks
+    if (!this.request.req.user?.userId) return undefined;
+    return this.usersService.findOne(this.request.req.user?.userId);
   }
 }
 

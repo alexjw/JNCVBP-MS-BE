@@ -8,27 +8,15 @@ import { LoginInput } from "./dto/login.input";
 export class AuthService {
   constructor(private readonly usersService: UsersService, private jwtService: JwtService) {}
 
-  // 623bd054b1af554d7cdbbf64
-
-  /*findOne(id: string) {
-    return this.usersService.findOne("623bd054b1af554d7cdbbf64");
-  }*/
-
-  /*async validateUser(username: string, pass: string): Promise<any> {
-    const user = await this.usersService.findOneByUsername(username);
-    if (user && bcrypt.compare(user.password, pass)) {
-      const { password, ...result } = user;
-      return result;
-    }
-    return null;
-  }*/
-
   async login(user: LoginInput) {
     const theUser = await this.usersService.findOneByUsername(user.username);
-    const payload = { username: user.username, sub: theUser._id };
-    const result = {
-      access_token: this.jwtService.sign(payload),
-    };
-    return result;
+
+    // Check this, always true for password
+    let passwordComparison = await bcrypt.compare(user.password, theUser?.password || "");
+    console.log({ user, theUser, passwordComparison });
+    if (theUser && passwordComparison) {
+      const payload = { username: user.username, sub: theUser._id };
+      return { access_token: this.jwtService.sign(payload) };
+    } else return { access_token: undefined };
   }
 }
