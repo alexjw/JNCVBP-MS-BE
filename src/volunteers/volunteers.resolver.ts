@@ -5,6 +5,8 @@ import { CreateVolunteerInput } from "./dto/create-volunteer.input";
 import { UpdateVolunteerInput } from "./dto/update-volunteer.input";
 import { Rank, RankModel } from "src/ranks/entities/rank.entity";
 import { RanksService } from "src/ranks/ranks.service";
+import { GqlAuthGuard } from "../auth/gql.auth.guard";
+import { UseGuards } from "@nestjs/common";
 
 @Resolver(() => Volunteer)
 export class VolunteersResolver {
@@ -15,6 +17,7 @@ export class VolunteersResolver {
     return this.volunteersService.create(createVolunteerInput);
   }
 
+  @UseGuards(GqlAuthGuard)
   @Query(() => [Volunteer], { name: "volunteers" })
   findAll() {
     return this.volunteersService.findAll();

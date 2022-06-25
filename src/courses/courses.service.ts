@@ -10,7 +10,6 @@ export class CoursesService {
   constructor(@InjectModel("Course") private model: Model<CourseModel>) {}
 
   create(createCourseInput: CreateCourseInput) {
-    console.log({ createCourseInput });
     return this.model.create(createCourseInput);
   }
 
