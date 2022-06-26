@@ -39,6 +39,11 @@ export class CoursesResolver {
     return this.coursesService.remove(id);
   }
 
+  @Mutation(() => Course)
+  restoreCourse(@Args("id") id: string) {
+    return this.coursesService.restore(id);
+  }
+
   @ResolveField(() => [CourseDetail])
   details(@Parent() course: CourseModel) {
     return this.volunteerService
