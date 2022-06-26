@@ -60,4 +60,8 @@ export class UsersService {
   remove(id: string) {
     return this.userModel.findOneAndUpdate({ _id: id }, { disabled: true }).exec();
   }
+
+  restore(id: string) {
+    return this.userModel.findOneAndUpdate({ _id: id }, { disabled: false }).exec();
+  }
 }

@@ -30,7 +30,10 @@ export class VolunteersService {
   }
 
   remove(id: string) {
-    //return this.volunteerModel.findOneAndDelete({_id: id}
     return this.volunteerModel.findOneAndUpdate({ _id: id }, { disabled: true });
+  }
+
+  restore(id: string) {
+    return this.volunteerModel.findOneAndUpdate({ _id: id }, { disabled: false });
   }
 }

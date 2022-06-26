@@ -32,4 +32,8 @@ export class FireClassService {
   remove(id: string) {
     return this.model.findOneAndUpdate({ _id: id }, { disabled: true });
   }
+
+  restore(id: string) {
+    return this.model.findOneAndUpdate({ _id: id }, { disabled: false });
+  }
 }

@@ -43,6 +43,11 @@ export class VolunteersResolver {
     return this.volunteersService.remove(id);
   }
 
+  @Mutation(() => Volunteer)
+  restoreVolunteer(@Args("id") id: string) {
+    return this.volunteersService.restore(id);
+  }
+
   @ResolveField(() => Rank)
   rank(@Parent() volunteer: VolunteerModel): Promise<RankModel | null> {
     return this.rankService.findOne(volunteer.rank?.id);

@@ -41,6 +41,11 @@ export class GuardResolver {
     return this.guardService.remove(id);
   }
 
+  @Mutation(() => Guard)
+  restoreGuard(@Args("id") id: string) {
+    return this.guardService.restore(id);
+  }
+
   @ResolveField(() => [Volunteer])
   volunteers(@Parent() service: ServiceModel): Promise<VolunteerModel[]> {
     return this.volunteerService.findMany(service.volunteers.map((volunteer) => volunteer._id.toString()));

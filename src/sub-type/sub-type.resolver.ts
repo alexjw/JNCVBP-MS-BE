@@ -37,4 +37,9 @@ export class SubTypeResolver {
   removeSubType(@Args("id") id: string) {
     return this.subTypeService.remove(id);
   }
+
+  @Mutation(() => SubType)
+  restoreSubType(@Args("id") id: string) {
+    return this.subTypeService.restore(id);
+  }
 }

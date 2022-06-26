@@ -37,4 +37,9 @@ export class DutiesResolver {
   removeDuty(@Args("id") id: string) {
     return this.dutiesService.remove(id);
   }
+
+  @Mutation(() => Duty)
+  restoreDuty(@Args("id") id: string) {
+    return this.dutiesService.restore(id);
+  }
 }
