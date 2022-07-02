@@ -37,4 +37,9 @@ export class FireClassResolver {
   removeFireClass(@Args("id") id: string) {
     return this.fireClassService.remove(id);
   }
+
+  @Mutation(() => FireClass)
+  restoreFireClass(@Args("id") id: string) {
+    return this.fireClassService.restore(id);
+  }
 }

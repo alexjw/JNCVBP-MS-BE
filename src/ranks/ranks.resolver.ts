@@ -39,4 +39,9 @@ export class RanksResolver {
   removeRank(@Args("id") id: string) {
     return this.rankService.remove(id);
   }
+
+  @Mutation(() => Rank)
+  restoreRank(@Args("id") id: string) {
+    return this.rankService.restore(id);
+  }
 }

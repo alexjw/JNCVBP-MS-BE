@@ -40,6 +40,11 @@ export class TrainingsResolver {
     return this.trainingsService.remove(id);
   }
 
+  @Mutation(() => Training)
+  restoreTraining(@Args("id") id: string) {
+    return this.trainingsService.restore(id);
+  }
+
   @ResolveField(() => [Volunteer])
   volunteers(@Parent() training: TrainingModel): Promise<VolunteerModel[]> {
     return this.volunteerService.findMany(training.volunteers.map((volunteer) => volunteer._id.toString()));

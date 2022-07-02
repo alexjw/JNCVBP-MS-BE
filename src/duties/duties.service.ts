@@ -30,4 +30,8 @@ export class DutiesService {
   remove(id: string) {
     return this.dutyModel.findOneAndUpdate({ _id: id }, { disabled: true });
   }
+
+  restore(id: string) {
+    return this.dutyModel.findOneAndUpdate({ _id: id }, { disabled: false });
+  }
 }

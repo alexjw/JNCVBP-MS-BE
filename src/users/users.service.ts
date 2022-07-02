@@ -12,7 +12,6 @@ export class UsersService {
   constructor(@InjectModel("User") private userModel: Model<UserModel>) {}
 
   async create(createUserInput: CreateUserInput) {
-    //return this.userModel.create(createUserInput);
     const salt = await bcrypt.genSalt();
     const hash = await bcrypt.hash(createUserInput.password, salt);
     const newUser = {
@@ -53,11 +52,21 @@ export class UsersService {
     return this.userModel.findOne({ username }).exec();
   }
 
-  update(id: string, updateUserInput: UpdateUserInput) {
-    return this.userModel.findOneAndUpdate({ _id: id }, updateUserInput).exec();
+  async update(id: string, updateUserInput: UpdateUserInput) {
+    let updateProperties = { ...updateUserInput };
+    if (updateUserInput.password) {
+      const salt = await bcrypt.genSalt();
+      const hash = await bcrypt.hash(updateProperties.password, salt);
+      updateProperties.password = hash;
+    } else delete updateProperties.password;
+    return this.userModel.findOneAndUpdate({ _id: id }, updateProperties).exec();
   }
 
   remove(id: string) {
     return this.userModel.findOneAndUpdate({ _id: id }, { disabled: true }).exec();
+  }
+
+  restore(id: string) {
+    return this.userModel.findOneAndUpdate({ _id: id }, { disabled: false }).exec();
   }
 }

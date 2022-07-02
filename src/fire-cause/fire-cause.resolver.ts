@@ -37,4 +37,9 @@ export class FireCauseResolver {
   removeFireCause(@Args("id") id: string) {
     return this.fireCauseService.remove(id);
   }
+
+  @Mutation(() => FireCause)
+  restoreFireCause(@Args("id") id: string) {
+    return this.fireCauseService.restore(id);
+  }
 }

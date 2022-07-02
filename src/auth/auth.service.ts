@@ -13,7 +13,9 @@ export class AuthService {
 
     // Check this, always true for password
     let passwordComparison = await bcrypt.compare(user.password, theUser?.password || "");
-    if (theUser && passwordComparison) {
+
+    // Create better error info if user is disabled
+    if (theUser && !theUser.disabled && passwordComparison) {
       const payload = { username: user.username, sub: theUser._id };
       return { access_token: this.jwtService.sign(payload) };
     } else return { access_token: undefined };

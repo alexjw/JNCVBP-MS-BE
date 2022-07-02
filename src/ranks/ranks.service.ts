@@ -30,4 +30,8 @@ export class RanksService {
   remove(id: string) {
     return this.rankModel.findOneAndUpdate({ _id: id }, { disabled: true });
   }
+
+  restore(id: string) {
+    return this.rankModel.findOneAndUpdate({ _id: id }, { disabled: false });
+  }
 }

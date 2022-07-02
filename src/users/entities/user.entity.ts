@@ -1,5 +1,6 @@
 import { ObjectType, Field, Int, ID } from "@nestjs/graphql";
 import * as mongoose from "mongoose";
+import { Schema } from "mongoose";
 
 @ObjectType()
 export class User {
@@ -19,6 +20,9 @@ export class User {
   email: string;
 
   @Field()
+  isAdmin: boolean;
+
+  @Field()
   password: string;
 }
 
@@ -28,6 +32,7 @@ export const UserSchema = new mongoose.Schema(
     lastName: String,
     username: String,
     email: String,
+    isAdmin: { type: Boolean, default: false },
     password: String,
     disabled: { type: Boolean, default: false },
   },
@@ -41,6 +46,7 @@ export class UserModel extends mongoose.Document {
   lastName: string;
   username: string;
   email: string;
+  isAdmin: boolean;
   password: string;
   disabled: boolean;
 }

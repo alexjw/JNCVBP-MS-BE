@@ -11,5 +11,7 @@ export class CreateUserInput {
   @Field()
   email: string;
   @Field()
+  isAdmin: boolean;
+  @Field()
   password: string;
 }

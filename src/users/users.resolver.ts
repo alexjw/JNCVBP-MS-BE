@@ -37,4 +37,9 @@ export class UsersResolver {
   removeUser(@Args("id") id: string) {
     return this.usersService.remove(id);
   }
+
+  @Mutation(() => User)
+  restoreUser(@Args("id") id: string) {
+    return this.usersService.restore(id);
+  }
 }

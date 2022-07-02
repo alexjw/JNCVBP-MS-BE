@@ -41,6 +41,11 @@ export class EventsResolver {
     return this.eventsService.remove(id);
   }
 
+  @Mutation(() => Event)
+  restoreEvent(@Args("id") id: string) {
+    return this.eventsService.restore(id);
+  }
+
   @ResolveField(() => Volunteer)
   created_by(@Parent() event: EventModel): Promise<VolunteerModel | null> {
     return this.volunteerService.findOne(event.created_by?._id?.toString());
