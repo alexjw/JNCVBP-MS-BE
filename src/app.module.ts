@@ -6,7 +6,7 @@ import { MongooseModule } from "@nestjs/mongoose";
 
 import { ServeStaticModule } from "@nestjs/serve-static";
 import { JwtModule } from "@nestjs/jwt";
-import { secret } from "./utils/constants";
+import { secret } from "./utils/Constants";
 import { join } from "path";
 import { UsersModule } from "./users/users.module";
 import { DutiesModule } from "./duties/duties.module";
