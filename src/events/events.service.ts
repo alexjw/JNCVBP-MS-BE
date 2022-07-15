@@ -22,7 +22,7 @@ export class EventsService {
   }
 
   update(id: string, updateEventInput: UpdateEventInput) {
-    return this.model.findOneAndUpdate({ _id: id }, { updateEventInput }).exec();
+    return this.model.findOneAndUpdate({ _id: id }, updateEventInput);
   }
 
   remove(id: string) {

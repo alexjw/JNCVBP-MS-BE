@@ -32,7 +32,7 @@ export class EventModel extends Document {
 
   description: string;
 
-  created_by?: { _id: ObjectId };
+  created_by?: { _id: string };
 
   disabled: boolean;
 }
