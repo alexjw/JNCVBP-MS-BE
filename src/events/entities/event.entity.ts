@@ -19,13 +19,16 @@ export class Event {
   created_by?: Volunteer;
 }
 
-export const EventSchema = new Schema({
-  description: String,
-  created_by: {
-    _id: { type: Schema.Types.ObjectId, ref: "Volunteer" },
+export const EventSchema = new Schema(
+  {
+    description: String,
+    created_by: {
+      _id: { type: Schema.Types.ObjectId, ref: "Volunteer" },
+    },
+    disabled: { type: Boolean, default: false },
   },
-  disabled: { type: Boolean, default: false },
-});
+  { timestamps: true }
+);
 
 export class EventModel extends Document {
   _id: ObjectId;

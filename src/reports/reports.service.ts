@@ -18,6 +18,7 @@ export class ReportsService {
   async generate(startDate: number, endDate: number) {
     let services = await this.servicesService.findAllBetween(new Date(startDate), new Date(endDate));
     let subTypes = await this.subTypeService.findAllIncludingDisabled();
+    let subTypesNotDisabled = await this.subTypeService.findAll(false);
     let fireCauses = await this.fireCauseService.findAllIncludingDisabled();
 
     let services1040 = services.filter(
@@ -47,6 +48,12 @@ export class ReportsService {
       name: subTypes.find((subType) => subType.id.toString() === row.id.toString()).name,
       count: row.count,
     }));
+    subTypesNotDisabled
+      .filter((subType) => subType.code === CODES.FIRE)
+      .forEach((subType) => {
+        if (!subTypeCountByName.find((theSubType) => theSubType.id === subType.id))
+          subTypeCountByName.push({ id: subType.id, name: subType.name, count: 0 });
+      });
     report.subTypeCount1040 = subTypeCountByName;
 
     // 1041
@@ -58,6 +65,12 @@ export class ReportsService {
       name: subTypes.find((subType) => subType.id.toString() === row.id.toString()).name,
       count: row.count,
     }));
+    subTypesNotDisabled
+      .filter((subType) => subType.code === CODES.ACCIDENT)
+      .forEach((subType) => {
+        if (!subTypeCountByName.find((theSubType) => theSubType.id === subType.id))
+          subTypeCountByName.push({ id: subType.id, name: subType.name, count: 0 });
+      });
     report.subTypeCount1041 = subTypeCountByName;
 
     // 1043
@@ -69,6 +82,12 @@ export class ReportsService {
       name: subTypes.find((subType) => subType.id.toString() === row.id.toString()).name,
       count: row.count,
     }));
+    subTypesNotDisabled
+      .filter((subType) => subType.code === CODES.RESCUE)
+      .forEach((subType) => {
+        if (!subTypeCountByName.find((theSubType) => theSubType.id === subType.id))
+          subTypeCountByName.push({ id: subType.id, name: subType.name, count: 0 });
+      });
     report.subTypeCount1043 = subTypeCountByName;
 
     let servicesDamageArray = services1040.map((service) => service.damage);
@@ -105,6 +124,10 @@ export class ReportsService {
       name: fireCauses.find((fireCause) => fireCause.id.toString() === row.id.toString()).name,
       count: row.count,
     }));
+    fireCauses.forEach((fireCause) => {
+      if (!possiblecausesCountByName.find((theFireCause) => theFireCause.id === fireCause.id))
+        possiblecausesCountByName.push({ id: fireCause.id, name: fireCause.name, count: 0 });
+    });
     report.possibleCausesCount = possiblecausesCountByName;
 
     report.count1040 = services1040.length;
