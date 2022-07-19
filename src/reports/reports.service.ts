@@ -97,7 +97,7 @@ export class ReportsService {
     damage1044Count = Object.entries(danmge1044CountMap).map(([id, count]) => ({ id, name: undefined, count }));
     report.quantities1044Count1043 = damage1044Count;
 
-    let possibleCausesByIdArray = services.map((service) => service.possible_cause._id);
+    let possibleCausesByIdArray = services1040.map((service) => service.possible_cause._id);
     let possibleCausesCountMap = _.countBy(possibleCausesByIdArray);
     let possiblecausesCountById = Object.entries(possibleCausesCountMap).map(([id, count]) => ({ id, count }));
     let possiblecausesCountByName = possiblecausesCountById.map((row) => ({
