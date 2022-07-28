@@ -79,10 +79,10 @@ export class CreateServiceInput {
   sub_type: OnlyIdSubTypeInput;
 
   @Field({ nullable: true })
-  fire_type_total_surface: number;
+  fire_type_total_surface: string;
 
   @Field({ nullable: true })
-  fire_type_burned_surface: number;
+  fire_type_burned_surface: string;
 
   @Field({ nullable: true })
   fire_type_description: string;
