@@ -87,10 +87,10 @@ export class Service {
   sub_type?: SubType;
 
   @Field({ nullable: true })
-  fire_type_total_surface: number;
+  fire_type_total_surface: string;
 
   @Field({ nullable: true })
-  fire_type_burned_surface: number;
+  fire_type_burned_surface: string;
 
   @Field({ nullable: true })
   fire_type_description: string;
@@ -179,8 +179,8 @@ export const ServiceSchema = new Schema(
     sub_type: {
       _id: { type: Schema.Types.ObjectId, ref: "SubType" },
     },
-    fire_type_total_surface: Number,
-    fire_type_burned_surface: Number,
+    fire_type_total_surface: String,
+    fire_type_burned_surface: String,
     fire_type_description: String,
     affected_owner: String,
     affected_owner_description: String,
@@ -254,8 +254,8 @@ export class ServiceModel extends Document {
   crew: string;
   officer_in_charge?: { _id: string };
   sub_type?: { _id: string };
-  fire_type_total_surface: number;
-  fire_type_burned_surface: number;
+  fire_type_total_surface: string;
+  fire_type_burned_surface: string;
   fire_type_description: string;
   affected_owner: string;
   affected_owner_description: string;
