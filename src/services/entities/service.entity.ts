@@ -21,6 +21,9 @@ export class ResourceUsed {
   resource: string;
 
   @Field({ nullable: true })
+  resource_other: string;
+
+  @Field({ nullable: true })
   quantity: number;
 }
 
@@ -215,6 +218,7 @@ export const ServiceSchema = new Schema(
     resources_used: [
       {
         resource: String,
+        resource_other: String,
         quantity: Number,
       },
     ],
@@ -275,7 +279,7 @@ export class ServiceModel extends Document {
   quantities1044: { name: string; quantity: number }[];
   involved_elements: string[];
   magnitude1041: string[];
-  resources_used: { resource: string; quantity: number }[];
+  resources_used: { resource: string; resource_other: string; quantity: number }[];
 
   rescue_type: string;
   disabled: boolean;

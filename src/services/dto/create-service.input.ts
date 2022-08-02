@@ -19,6 +19,9 @@ export class ResourceUsedInput {
   resource: string;
 
   @Field({ nullable: true })
+  resource_other: string;
+
+  @Field({ nullable: true })
   quantity: number;
 }
 
