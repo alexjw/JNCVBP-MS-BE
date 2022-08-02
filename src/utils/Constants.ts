@@ -4,4 +4,6 @@ export const CODES = {
   RESCUE: "10.43",
 };
 
+export const OTHER_NAME = "Otro";
+
 export const secret = "secretKey";
