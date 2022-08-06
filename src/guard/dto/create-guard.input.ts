@@ -9,6 +9,9 @@ export class CreateGuardInput {
   @Field(() => GraphQLTimestamp)
   end_time: number;
 
-  @Field(() => [OnlyIdVolunteerInput])
+  @Field(() => [OnlyIdVolunteerInput], { nullable: true })
   volunteers: OnlyIdVolunteerInput[];
+
+  @Field({ nullable: true })
+  observations: string;
 }

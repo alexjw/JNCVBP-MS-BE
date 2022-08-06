@@ -12,6 +12,8 @@ export class UsersService {
   constructor(@InjectModel("User") private userModel: Model<UserModel>) {}
 
   async create(createUserInput: CreateUserInput) {
+    let existingUserByUsername = await this.findOneByUsername(createUserInput.username);
+    if (existingUserByUsername) throw new HttpException("Conflict", HttpStatus.CONFLICT);
     const salt = await bcrypt.genSalt();
     const hash = await bcrypt.hash(createUserInput.password, salt);
     const newUser = {
@@ -19,25 +21,6 @@ export class UsersService {
       password: hash,
     };
     return this.userModel.create(newUser);
-  }
-
-  /*async signin(user: User, jwt: JwtService): Promise<any> {
-    const foundUser = await this.userModel.findOne({ email: user.email }).exec();
-    if (foundUser) {
-      const { password } = foundUser;
-      if (bcrypt.compare(user.password, password)) {
-        const payload = { email: user.email };
-        return {
-          token: jwt.sign(payload),
-        };
-      }
-      return new HttpException("Incorrect username or password", HttpStatus.UNAUTHORIZED);
-    }
-    return new HttpException("Incorrect username or password", HttpStatus.UNAUTHORIZED);
-  }*/
-
-  async findOneByEmail(email) {
-    return await this.userModel.findOne({ email }).exec();
   }
 
   findAll(disabled = false) {
@@ -53,6 +36,8 @@ export class UsersService {
   }
 
   async update(id: string, updateUserInput: UpdateUserInput) {
+    let existingUserByUsername = await this.findOneByUsername(updateUserInput.username);
+    if (existingUserByUsername) throw new HttpException("Conflict", HttpStatus.CONFLICT);
     let updateProperties = { ...updateUserInput };
     if (updateUserInput.password) {
       const salt = await bcrypt.genSalt();
