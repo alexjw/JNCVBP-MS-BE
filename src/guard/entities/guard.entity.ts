@@ -16,6 +16,9 @@ export class Guard {
 
   @Field(() => [Volunteer], { nullable: true })
   volunteers: Volunteer[];
+
+  @Field({ nullable: true })
+  observations: string;
 }
 
 export const GuardSchema = new Schema(
@@ -27,6 +30,7 @@ export const GuardSchema = new Schema(
         _id: { type: Schema.Types.ObjectId, ref: "Volunteer" },
       },
     ],
+    observations: String,
     disabled: { type: Boolean, default: false },
   },
   { timestamps: true }
@@ -38,4 +42,5 @@ export class GuardModel extends Document {
   end_time: number;
   volunteers: { _id: string }[];
   disabled: boolean;
+  observations: string;
 }
