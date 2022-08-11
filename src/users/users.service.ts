@@ -37,7 +37,8 @@ export class UsersService {
 
   async update(id: string, updateUserInput: UpdateUserInput) {
     let existingUserByUsername = await this.findOneByUsername(updateUserInput.username);
-    if (existingUserByUsername) throw new HttpException("Conflict", HttpStatus.CONFLICT);
+    if (existingUserByUsername && existingUserByUsername._id + "" !== id)
+      throw new HttpException("Conflict", HttpStatus.CONFLICT);
     let updateProperties = { ...updateUserInput };
     if (updateUserInput.password) {
       const salt = await bcrypt.genSalt();
