@@ -17,6 +17,13 @@ export class GuardService {
     return this.model.find().where({ disabled });
   }
 
+  findPaginated(limit, offset, disabled = false) {
+    return {
+      items: this.model.find().where({ disabled }).skip(offset).limit(limit),
+      totalSize: this.model.countDocuments({ disabled }),
+    };
+  }
+
   findOne(id: string) {
     return this.model.findById(id).exec();
   }
@@ -35,11 +42,9 @@ export class GuardService {
 
   findCurrent() {
     const currentTime = new Date();
-    return this.model
-      .findOne()
-      .where({
-        $and: [{ start_time: { $lte: currentTime } }, { end_time: { $gte: currentTime } }, { disabled: false }],
-      });
+    return this.model.findOne().where({
+      $and: [{ start_time: { $lte: currentTime } }, { end_time: { $gte: currentTime } }, { disabled: false }],
+    });
   }
 
   findNext() {

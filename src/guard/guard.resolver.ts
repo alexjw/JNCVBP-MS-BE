@@ -6,6 +6,7 @@ import { UpdateGuardInput } from "./dto/update-guard.input";
 import { Volunteer, VolunteerModel } from "../volunteers/entities/volunteer.entity";
 import { ServiceModel } from "../services/entities/service.entity";
 import { VolunteersService } from "../volunteers/volunteers.service";
+import { PaginatedGuards } from "./dto/paginated-guards";
 
 @Resolver(() => Guard)
 export class GuardResolver {
@@ -19,6 +20,11 @@ export class GuardResolver {
   @Query(() => [Guard], { name: "guards" })
   findAll() {
     return this.guardService.findAll();
+  }
+
+  @Query(() => PaginatedGuards, { name: "paginatedGuards" })
+  findAllPaginated(@Args("limit") limit: number, @Args("offset") offset: number) {
+    return this.guardService.findPaginated(limit, offset);
   }
 
   @Query(() => [Guard])
