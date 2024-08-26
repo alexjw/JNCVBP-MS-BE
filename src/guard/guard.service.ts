@@ -17,9 +17,14 @@ export class GuardService {
     return this.model.find().where({ disabled });
   }
 
-  findPaginated(limit, offset, disabled = false) {
+  findPaginated(limit, offset, sortField, sortOrder, disabled = false) {
     return {
-      items: this.model.find().where({ disabled }).skip(offset).limit(limit),
+      items: this.model
+        .find()
+        .where({ disabled })
+        .sort((sortOrder === "desc" ? "-" : "") + sortField)
+        .skip(offset)
+        .limit(limit),
       totalSize: this.model.countDocuments({ disabled }),
     };
   }

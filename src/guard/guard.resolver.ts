@@ -23,8 +23,13 @@ export class GuardResolver {
   }
 
   @Query(() => PaginatedGuards, { name: "paginatedGuards" })
-  findAllPaginated(@Args("limit") limit: number, @Args("offset") offset: number) {
-    return this.guardService.findPaginated(limit, offset);
+  findAllPaginated(
+    @Args("limit") limit: number,
+    @Args("offset") offset: number,
+    @Args("sortField", { defaultValue: "id" }) sortField: string,
+    @Args("sortOrder", { defaultValue: "desc" }) sortOrder: string
+  ) {
+    return this.guardService.findPaginated(limit, offset, sortField, sortOrder);
   }
 
   @Query(() => [Guard])
