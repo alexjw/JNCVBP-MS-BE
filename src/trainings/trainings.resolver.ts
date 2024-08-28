@@ -5,6 +5,7 @@ import { CreateTrainingInput } from "./dto/create-training.input";
 import { UpdateTrainingInput } from "./dto/update-training.input";
 import { VolunteersService } from "../volunteers/volunteers.service";
 import { Volunteer, VolunteerModel } from "../volunteers/entities/volunteer.entity";
+import { PaginatedTrainings } from "./dto/paginated-trainings";
 
 @Resolver(() => Training)
 export class TrainingsResolver {
@@ -18,6 +19,17 @@ export class TrainingsResolver {
   @Query(() => [Training], { name: "trainings" })
   findAll() {
     return this.trainingsService.findAll();
+  }
+
+  @Query(() => PaginatedTrainings, { name: "paginatedTrainings" })
+  findAllPaginated(
+    @Args("limit", { defaultValue: 10 }) limit: number,
+    @Args("offset", { defaultValue: 0 }) offset: number,
+    @Args("sortField", { defaultValue: "id" }) sortField: string,
+    @Args("sortOrder", { defaultValue: "desc" }) sortOrder: string,
+    @Args("searchText", { defaultValue: "" }) searchText: string
+  ) {
+    return this.trainingsService.findPaginated(limit, offset, sortField, sortOrder, searchText);
   }
 
   @Query(() => [Training])
