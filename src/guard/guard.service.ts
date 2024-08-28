@@ -38,24 +38,7 @@ export class GuardService {
         });
     } else if (searchText) {
       query.where({
-        $or: [
-          { observations: { $regex: searchText, $options: "i" } },
-          /*{ // Todo
-            $expr: {
-              $regexMatch: {
-                input: {
-                  $reduce: {
-                    input: "$volunteers",
-                    initialValue: "",
-                    in: { $concat: ["$$value", " ", "$$this.name"] }
-                  }
-                },
-                regex: searchText,
-                options: 'i'
-              }
-            }
-          }*/
-        ],
+        $or: [{ observations: { $regex: searchText, $options: "i" } }],
       });
     }
     const countQuery = _.cloneDeep(query);
