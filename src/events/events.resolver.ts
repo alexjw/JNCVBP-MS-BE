@@ -5,6 +5,7 @@ import { CreateEventInput } from "./dto/create-event.input";
 import { UpdateEventInput } from "./dto/update-event.input";
 import { User } from "../users/entities/user.entity";
 import { UsersService } from "../users/users.service";
+import { PaginatedEvents } from "./dto/paginated-events";
 
 @Resolver(() => Event)
 export class EventsResolver {
@@ -18,6 +19,17 @@ export class EventsResolver {
   @Query(() => [Event], { name: "events" })
   findAll() {
     return this.eventsService.findAll();
+  }
+
+  @Query(() => PaginatedEvents, { name: "paginatedEvents" })
+  findAllPaginated(
+    @Args("limit", { defaultValue: 10 }) limit: number,
+    @Args("offset", { defaultValue: 0 }) offset: number,
+    @Args("sortField", { defaultValue: "id" }) sortField: string,
+    @Args("sortOrder", { defaultValue: "desc" }) sortOrder: string,
+    @Args("searchText", { defaultValue: "" }) searchText: string
+  ) {
+    return this.eventsService.findPaginated(limit, offset, sortField, sortOrder, searchText);
   }
 
   @Query(() => [Event])
