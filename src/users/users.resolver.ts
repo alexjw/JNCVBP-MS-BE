@@ -3,6 +3,7 @@ import { UsersService } from "./users.service";
 import { User } from "./entities/user.entity";
 import { CreateUserInput } from "./dto/create-user.input";
 import { UpdateUserInput } from "./dto/update-user.input";
+import { PaginatedUsers } from "./dto/paginated-users";
 
 @Resolver(() => User)
 export class UsersResolver {
@@ -16,6 +17,17 @@ export class UsersResolver {
   @Query(() => [User], { name: "users" })
   findAll() {
     return this.usersService.findAll();
+  }
+
+  @Query(() => PaginatedUsers, { name: "paginatedUsers" })
+  findAllPaginated(
+    @Args("limit", { defaultValue: 10 }) limit: number,
+    @Args("offset", { defaultValue: 0 }) offset: number,
+    @Args("sortField", { defaultValue: "id" }) sortField: string,
+    @Args("sortOrder", { defaultValue: "desc" }) sortOrder: string,
+    @Args("searchText", { defaultValue: "" }) searchText: string
+  ) {
+    return this.usersService.findPaginated(limit, offset, sortField, sortOrder, searchText);
   }
 
   @Query(() => [User])
