@@ -20,7 +20,7 @@ export class VolunteersService {
   }
 
   findPaginated(limit, offset, sortField, sortOrder, searchText, disabled = false) {
-    const query = this.model.find().populate({ path: "rank.id", model: "Rank" }).where({ disabled });
+    const query = this.model.find().where({ disabled });
 
     const searchIsValidDate = moment(searchText, "DD/MM/YYYY", true).isValid();
 

@@ -26,9 +26,10 @@ export class CoursesResolver {
     @Args("offset", { defaultValue: 0 }) offset: number,
     @Args("sortField", { defaultValue: "id" }) sortField: string,
     @Args("sortOrder", { defaultValue: "desc" }) sortOrder: string,
-    @Args("searchText", { defaultValue: "" }) searchText: string
+    @Args("searchText", { defaultValue: "" }) searchText: string,
+    @Args("disabled", { defaultValue: false }) disabled: boolean
   ) {
-    return this.service.findPaginated(limit, offset, sortField, sortOrder, searchText);
+    return this.service.findPaginated(limit, offset, sortField, sortOrder, searchText, disabled);
   }
 
   @Query(() => [Course])
