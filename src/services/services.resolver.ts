@@ -11,6 +11,7 @@ import { FireCause, FireCauseModel } from "../fire-cause/entities/fire-cause.ent
 import { FireCauseService } from "../fire-cause/fire-cause.service";
 import { FireClass } from "../fire-class/entities/fire-class.entity";
 import { FireClassService } from "../fire-class/fire-class.service";
+import { PaginatedServices } from "./dto/paginated-services";
 
 @Resolver(() => Service)
 export class ServicesResolver {
@@ -30,6 +31,18 @@ export class ServicesResolver {
   @Query(() => [Service], { name: "services" })
   findAll() {
     return this.servicesService.findAll();
+  }
+
+  @Query(() => PaginatedServices, { name: "paginatedServices" })
+  findAllPaginated(
+    @Args("limit", { defaultValue: 10 }) limit: number,
+    @Args("offset", { defaultValue: 0 }) offset: number,
+    @Args("sortField", { defaultValue: "id" }) sortField: string,
+    @Args("sortOrder", { defaultValue: "desc" }) sortOrder: string,
+    @Args("searchText", { defaultValue: "" }) searchText: string,
+    @Args("disabled", { defaultValue: false }) disabled: boolean
+  ) {
+    return this.servicesService.findPaginated(limit, offset, sortField, sortOrder, searchText, disabled);
   }
 
   @Query(() => [Service])

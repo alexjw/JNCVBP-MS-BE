@@ -7,45 +7,58 @@ import { Rank, RankModel } from "src/ranks/entities/rank.entity";
 import { RanksService } from "src/ranks/ranks.service";
 import { GqlAuthGuard } from "../auth/gql.auth.guard";
 import { UseGuards } from "@nestjs/common";
+import { PaginatedVolunteers } from "./dto/paginated-volunteers";
 
 @Resolver(() => Volunteer)
 export class VolunteersResolver {
-  constructor(private readonly volunteersService: VolunteersService, private rankService: RanksService) {}
+  constructor(private readonly service: VolunteersService, private rankService: RanksService) {}
 
   @Mutation(() => Volunteer)
   createVolunteer(@Args("createVolunteerInput") createVolunteerInput: CreateVolunteerInput) {
-    return this.volunteersService.create(createVolunteerInput);
+    return this.service.create(createVolunteerInput);
   }
 
   @UseGuards(GqlAuthGuard)
   @Query(() => [Volunteer], { name: "volunteers" })
   findAll() {
-    return this.volunteersService.findAll();
+    return this.service.findAll();
+  }
+
+  @Query(() => PaginatedVolunteers, { name: "paginatedVolunteers" })
+  findAllPaginated(
+    @Args("limit", { defaultValue: 10 }) limit: number,
+    @Args("offset", { defaultValue: 0 }) offset: number,
+    @Args("sortField", { defaultValue: "id" }) sortField: string,
+    @Args("sortOrder", { defaultValue: "desc" }) sortOrder: string,
+    @Args("searchText", { defaultValue: "" }) searchText: string,
+    @Args("disabled", { defaultValue: false }) disabled: boolean
+  ) {
+    return this.service.findPaginated(limit, offset, sortField, sortOrder, searchText, disabled);
   }
 
   @Query(() => [Volunteer])
   volunteersDisabled() {
-    return this.volunteersService.findAll(true);
+    return this.service.findAll(true);
   }
 
   @Query(() => Volunteer, { name: "volunteer" })
   findOne(@Args("id") id: string) {
-    return this.volunteersService.findOne(id);
+    return this.service.findOne(id);
   }
 
   @Mutation(() => Volunteer, { name: "updateVolunteer" })
   updateVolunteer(@Args("updateVolunteerInput") updateVolunteerInput: UpdateVolunteerInput) {
-    return this.volunteersService.update(updateVolunteerInput.id, updateVolunteerInput);
+    return this.service.update(updateVolunteerInput.id, updateVolunteerInput);
   }
 
   @Mutation(() => Volunteer)
   removeVolunteer(@Args("id") id: string) {
-    return this.volunteersService.remove(id);
+    return this.service.remove(id);
   }
 
   @Mutation(() => Volunteer)
   restoreVolunteer(@Args("id") id: string) {
-    return this.volunteersService.restore(id);
+    return this.service.restore(id);
   }
 
   @ResolveField(() => Rank)
