@@ -45,11 +45,6 @@ const config = require("../config.js");
     GraphQLModule.forRoot({ autoSchemaFile: true, installSubscriptionHandlers: true }),
     // This is the connection to the MongoDB database
     MongooseModule.forRoot(config.MONGO_DB),
-    // This is the configuration for the JWT authentication
-    JwtModule.register({
-      secret,
-      signOptions: { expiresIn: "2h" },
-    }),
     // Adding all of modules of the application.
     UsersModule,
     DutiesModule,
