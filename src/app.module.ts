@@ -30,14 +30,27 @@ import AppResolver from "./app.resolver";
 
 const config = require("../config.js");
 
+/**
+ * This is the main application module.
+ * It imports all of the other modules of the application and configures them.
+ * It also adds the needed controllers and providers.
+ * The login function is a special case, it is a local guard that logs in the user
+ * and returns the user object.
+ */
 @Module({
   imports: [
+    // We use code-first approach for GraphQL, instead of schema-first
+    // This allow us to have a better control on the schema and the resolvers
+    // See https://docs.nestjs.com/graphql/quick-start#code-first
     GraphQLModule.forRoot({ autoSchemaFile: true, installSubscriptionHandlers: true }),
+    // This is the connection to the MongoDB database
     MongooseModule.forRoot(config.MONGO_DB),
+    // This is the configuration for the JWT authentication
     JwtModule.register({
       secret,
       signOptions: { expiresIn: "2h" },
     }),
+    // Adding all of modules of the application.
     UsersModule,
     DutiesModule,
     RanksModule,
@@ -53,17 +66,14 @@ const config = require("../config.js");
     ReportsModule,
     AuthModule,
   ],
+  // Adding needed controllers
   controllers: [AppController],
-  providers: [
-    AppService,
-    AppResolver,
-    /*{
-      provide: APP_GUARD,
-      useClass: JwtAuthGuard,
-    }*/
-  ], // Global Authentication
+  // Adding needed providers
+  providers: [AppService, AppResolver],
 })
 export class AppModule {
+  // This is a special case for the login function, it is a local guard that logs in the user
+  // and returns the user object.
   @UseGuards(LocalAuthGuard)
   @Post("auth/login")
   async login(@Request() req) {
