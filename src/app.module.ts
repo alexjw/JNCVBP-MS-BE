@@ -47,7 +47,7 @@ const config = require("../config.js");
     MongooseModule.forRoot(config.MONGO_DB),
     // Adding all of modules of the application.
     UsersModule,
-    DutiesModule,
+    DutiesModule, // Duties is not used, TODO clean
     RanksModule,
     ServicesModule,
     VolunteersModule,

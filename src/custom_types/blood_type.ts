@@ -1,3 +1,6 @@
+/**
+ * An enumeration of the different blood types.
+ */
 export enum BloodType {
   NotSet = "Not Set", //The user's blood type is not recorded.
   APositive = "A+", // The A+ blood type.

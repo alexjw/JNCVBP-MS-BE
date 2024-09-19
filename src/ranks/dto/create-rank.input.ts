@@ -1,5 +1,8 @@
 import { InputType, Field } from "@nestjs/graphql";
 
+/**
+ * The input for creating a rank (For Volunteers)
+ */
 @InputType()
 export class CreateRankInput {
   @Field()
@@ -7,10 +10,6 @@ export class CreateRankInput {
 
   @Field({ nullable: true })
   isDeletable: boolean;
-
-  // read only field
-  // @Field()
-  // readonly isDeletable: boolean;
 
   @Field({ nullable: true })
   description: string;

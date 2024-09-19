@@ -1,9 +1,9 @@
 import { ObjectType, Field } from "@nestjs/graphql";
-import { Volunteer } from "../../volunteers/entities/volunteer.entity";
 import { Document, Schema } from "mongoose";
 import { ObjectId } from "mongodb";
 import { User } from "../../users/entities/user.entity";
 
+// An event is like a part of a daily log, should be registered frequently.
 @ObjectType()
 export class Event {
   @Field()
@@ -15,11 +15,9 @@ export class Event {
   @Field()
   description: string;
 
-  // This needs to be changed to User, when implemented
   @Field(() => User, { nullable: true })
   created_by?: User;
 
-  // This needs to be changed to User, when implemented
   @Field({ nullable: true })
   createdAt: Date;
 }

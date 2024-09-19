@@ -4,6 +4,9 @@ import { BloodType } from "src/custom_types/blood_type";
 import { OnlyIdTypeInput } from "src/custom_types/only-id.input";
 import { VolunteerStatus } from "src/custom_types/volunteer_status";
 
+/**
+ * GraphQL input type for creating a Volunteer.
+ */
 @InputType()
 export class CreateVolunteerInput {
   @Field()

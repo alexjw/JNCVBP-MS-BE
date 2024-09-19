@@ -2,9 +2,13 @@ import { InputType, Field, ObjectType } from "@nestjs/graphql";
 import { OnlyIdVolunteerInput } from "../../volunteers/dto/only-id-volunteer.input";
 import { OnlyIdSubTypeInput } from "../../sub-type/dto/only-id-sub-type.input";
 import { OnlyIdFireClassInput } from "../../fire-class/dto/only-id-fire-class.input";
-import { ResourceUsed } from "../entities/service.entity";
 
 @InputType()
+/**
+ * Represents a quantity detail input.
+ *
+ * A quantity detail input is used when creating or updating a detail line for 10.44 in services.
+ */
 export class Quantity1044Input {
   @Field({ nullable: true })
   name: string;
@@ -13,6 +17,11 @@ export class Quantity1044Input {
   quantity: number;
 }
 
+/**
+ * Represents a quantity detail input.
+ *
+ * A quantity detail input is used when creating or updating a quantity.
+ */
 @InputType()
 export class ResourceUsedInput {
   @Field({ nullable: true })
@@ -25,6 +34,13 @@ export class ResourceUsedInput {
   quantity: number;
 }
 
+/**
+ * A class representing the input for creating a service.
+ *
+ * The purpose of this class is to provide a way to validate the input
+ * for the createService mutation, and to provide a way to automatically generate
+ * the GraphQL SDL for the createService mutation.
+ */
 @InputType()
 export class CreateServiceInput {
   @Field()
