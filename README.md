@@ -70,14 +70,6 @@ This Nest.JS follows code-first approach for GraphQL, and the GraphQL schema is 
 2. Install dependencies: `npm install` or `yarn install`
 3. Start the application: `npm run start` or `yarn start`
 
-### API Documentation
-
----
-
-API documentation is available at `http://localhost:3000/graphql` (or the port number specified in the `.env` file).
-
-Contributions are welcome! Please submit a pull request with a clear description of the changes made.
-
 ## License
 
 ---
