@@ -1,9 +1,16 @@
-import { Resolver, Query, Mutation, Args, Int } from "@nestjs/graphql";
+import { Resolver, Query, Mutation, Args } from "@nestjs/graphql";
 import { DutiesService } from "./duties.service";
 import { Duty } from "./entities/duty.entity";
 import { CreateDutyInput } from "./dto/create-duty.input";
 import { UpdateDutyInput } from "./dto/update-duty.input";
 
+/**
+ * DutiesResolver is a Nest resolver that handles GraphQL queries and mutations related to duties.
+ *
+ * It provides endpoints for creating, retrieving, updating and deleting duties.
+ *
+ * @see DutiesService
+ */
 @Resolver(() => Duty)
 export class DutiesResolver {
   constructor(private readonly dutiesService: DutiesService) {}

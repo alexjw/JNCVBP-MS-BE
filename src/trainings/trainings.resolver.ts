@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Int, ResolveField, Parent } from "@nestjs/graphql";
+import { Resolver, Query, Mutation, Args, ResolveField, Parent } from "@nestjs/graphql";
 import { TrainingsService } from "./trainings.service";
 import { Training, TrainingModel } from "./entities/training.entity";
 import { CreateTrainingInput } from "./dto/create-training.input";
@@ -7,6 +7,13 @@ import { VolunteersService } from "../volunteers/volunteers.service";
 import { Volunteer, VolunteerModel } from "../volunteers/entities/volunteer.entity";
 import { PaginatedTrainings } from "./dto/paginated-trainings";
 
+/**
+ * TrainingsResolver is a Nest resolver that handles GraphQL queries and mutations related to Trainings.
+ *
+ * It provides endpoints for creating, retrieving, updating and deleting Trainings.
+ *
+ * @see TrainingsService
+ */
 @Resolver(() => Training)
 export class TrainingsResolver {
   constructor(private readonly trainingsService: TrainingsService, private volunteerService: VolunteersService) {}

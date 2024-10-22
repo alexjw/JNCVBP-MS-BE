@@ -1,9 +1,16 @@
-import { Resolver, Query, Mutation, Args, Int } from "@nestjs/graphql";
+import { Resolver, Query, Mutation, Args } from "@nestjs/graphql";
 import { FireCauseService } from "./fire-cause.service";
 import { FireCause } from "./entities/fire-cause.entity";
 import { CreateFireCauseInput } from "./dto/create-fire-cause.input";
 import { UpdateFireCauseInput } from "./dto/update-fire-cause.input";
 
+/**
+ * FireCauseResolver is a Nest resolver that handles GraphQL queries and mutations related to Fire Causes.
+ *
+ * It provides endpoints for creating, retrieving, updating and deleting Fire Causes.
+ *
+ * @see FireCauseService
+ */
 @Resolver(() => FireCause)
 export class FireCauseResolver {
   constructor(private readonly fireCauseService: FireCauseService) {}

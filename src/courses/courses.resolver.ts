@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Int, ResolveField, Parent } from "@nestjs/graphql";
+import { Resolver, Query, Mutation, Args, ResolveField, Parent } from "@nestjs/graphql";
 import { CoursesService } from "./courses.service";
 import { Course, CourseDetail, CourseModel } from "./entities/course.entity";
 import { CreateCourseInput } from "./dto/create-course.input";
@@ -6,6 +6,17 @@ import { UpdateCourseInput } from "./dto/update-course.input";
 import { VolunteersService } from "../volunteers/volunteers.service";
 import { PaginatedCourses } from "./dto/paginated-courses";
 
+/**
+ * CoursesResolver is a Nest.js resolver which provides GraphQL endpoints for the Course entity.
+ *
+ * The resolver provides the following endpoints:
+ * - `courses`: A query which returns a list of all courses.
+ * - `createCourse`: A mutation which creates a new course.
+ * - `course`: A query which returns a single course by its ID.
+ * - `updateCourse`: A mutation which updates a single course.
+ * - `removeCourse`: A mutation which removes a single course.
+ * - `restoreCourse`: A mutation which restores a single course.
+ */
 @Resolver(() => Course)
 export class CoursesResolver {
   constructor(private readonly service: CoursesService, private volunteerService: VolunteersService) {}

@@ -13,6 +13,13 @@ import { FireClass } from "../fire-class/entities/fire-class.entity";
 import { FireClassService } from "../fire-class/fire-class.service";
 import { PaginatedServices } from "./dto/paginated-services";
 
+/**
+ * ServicesResolver is a Nest resolver that handles GraphQL queries and mutations related to Services.
+ *
+ * It provides endpoints for creating, retrieving, updating and deleting Services.
+ *
+ * @see ServicesService
+ */
 @Resolver(() => Service)
 export class ServicesResolver {
   constructor(

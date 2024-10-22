@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Int, ResolveField, Parent } from "@nestjs/graphql";
+import { Resolver, Query, Mutation, Args, ResolveField, Parent } from "@nestjs/graphql";
 import { VolunteersService } from "./volunteers.service";
 import { Volunteer, VolunteerModel } from "./entities/volunteer.entity";
 import { CreateVolunteerInput } from "./dto/create-volunteer.input";
@@ -9,6 +9,13 @@ import { GqlAuthGuard } from "../auth/gql.auth.guard";
 import { UseGuards } from "@nestjs/common";
 import { PaginatedVolunteers } from "./dto/paginated-volunteers";
 
+/**
+ * VolunteersResolver is a Nest resolver that handles GraphQL queries and mutations related to Volunteers.
+ *
+ * It provides endpoints for creating, retrieving, updating and deleting Volunteers.
+ *
+ * @see VolunteersService
+ */
 @Resolver(() => Volunteer)
 export class VolunteersResolver {
   constructor(private readonly service: VolunteersService, private rankService: RanksService) {}

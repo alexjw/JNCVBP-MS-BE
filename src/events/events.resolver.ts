@@ -7,6 +7,13 @@ import { User } from "../users/entities/user.entity";
 import { UsersService } from "../users/users.service";
 import { PaginatedEvents } from "./dto/paginated-events";
 
+/**
+ * EventsResolver is a Nest resolver that handles GraphQL queries and mutations related to events.
+ *
+ * It provides endpoints for creating, retrieving, updating and deleting events.
+ *
+ * @see EventsService
+ */
 @Resolver(() => Event)
 export class EventsResolver {
   constructor(private readonly eventsService: EventsService, private usersService: UsersService) {}

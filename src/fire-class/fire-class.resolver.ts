@@ -4,6 +4,13 @@ import { FireClass } from "./entities/fire-class.entity";
 import { CreateFireClassInput } from "./dto/create-fire-class.input";
 import { UpdateFireClassInput } from "./dto/update-fire-class.input";
 
+/**
+ * FireClassResolver is a Nest resolver that handles GraphQL queries and mutations related to Fire Classes.
+ *
+ * It provides endpoints for creating, retrieving, updating and deleting Fire Classes.
+ *
+ * @see FireClassService
+ */
 @Resolver(() => FireClass)
 export class FireClassResolver {
   constructor(private readonly fireClassService: FireClassService) {}
