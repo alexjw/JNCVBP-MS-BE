@@ -1,12 +1,15 @@
-import { ObjectType, Field, Int, ID } from "@nestjs/graphql";
-import * as mongoose from "mongoose";
+import { ObjectType, Field } from "@nestjs/graphql";
 import { ObjectId } from "mongodb";
-import { isEnumType } from "graphql";
 import { Document, Schema } from "mongoose";
 import { BloodType } from "src/custom_types/blood_type";
 import { VolunteerStatus } from "src/custom_types/volunteer_status";
 import { Rank } from "src/ranks/entities/rank.entity";
 
+/**
+ * A GraphQL type representing a volunteer.
+ *
+ * A volunteer is a person who has or had an active participation in the organization.
+ */
 @ObjectType()
 export class Volunteer {
   @Field({ nullable: true })
@@ -41,6 +44,12 @@ export class Volunteer {
   rank?: Rank;
 }
 
+/**
+ * Mongoose schema for the Volunteer model.
+ *
+ * This schema defines the structure of the Volunteer collection in the
+ * MongoDB database.
+ */
 export const VolunteerSchema = new Schema(
   {
     name: String,
@@ -58,6 +67,29 @@ export const VolunteerSchema = new Schema(
   { timestamps: true }
 );
 
+/**
+ * Represents a volunteer in the MongoDB database.
+ *
+ * @property {ObjectId} _id - The ID of the volunteer.
+ *
+ * @property {string} name - The name of the volunteer.
+ *
+ * @property {string} code - The code of the volunteer.
+ *
+ * @property {string} address - The address of the volunteer.
+ *
+ * @property {string} blood_type - The blood type of the volunteer.
+ *
+ * @property {string} status - The status of the volunteer.
+ *
+ * @property {Date} incorporation_date - The date when the volunteer was incorporated.
+ *
+ * @property {Date} birth_date - The birth date of the volunteer.
+ *
+ * @property {Rank} rank - The rank of the volunteer.
+ *
+ * @property {boolean} disabled - Whether the volunteer is disabled.
+ */
 export class VolunteerModel extends Document {
   _id: ObjectId;
   name: string;
@@ -67,6 +99,6 @@ export class VolunteerModel extends Document {
   status: string;
   incorporation_date: Date;
   birth_date: Date;
-  rank: { id: string }; // todo Check this
+  rank: { id: string };
   disabled: boolean;
 }

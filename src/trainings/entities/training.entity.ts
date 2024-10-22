@@ -1,8 +1,13 @@
-import { ObjectType, Field, Int } from "@nestjs/graphql";
+import { ObjectType, Field } from "@nestjs/graphql";
 import { Volunteer } from "../../volunteers/entities/volunteer.entity";
 import { Document, Schema } from "mongoose";
 import { ObjectId } from "mongodb";
 
+/**
+ * A GraphQL type representing a training.
+ *
+ * A training is a type of activity that the volunteers can participate in.
+ */
 @ObjectType()
 export class Training {
   @Field()
@@ -18,6 +23,9 @@ export class Training {
   volunteers: Volunteer[];
 }
 
+/**
+ * The Mongoose schema for the Training model.
+ */
 export const TrainingSchema = new Schema(
   {
     description: String,
@@ -32,6 +40,12 @@ export const TrainingSchema = new Schema(
   { timestamps: true }
 );
 
+/**
+ * A document representing a training in the MongoDB database.
+ *
+ * This class provides a way to interact with the Training collection in the
+ * MongoDB database.
+ */
 export class TrainingModel extends Document {
   _id: ObjectId;
   description: string;

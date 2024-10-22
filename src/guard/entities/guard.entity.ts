@@ -3,6 +3,19 @@ import { Volunteer } from "../../volunteers/entities/volunteer.entity";
 import { Document, Schema } from "mongoose";
 import { ObjectId } from "mongodb";
 
+/**
+ * GraphQL type representing a guard.
+ *
+ * A guard is a time period that a group of volunteers is assigned to be on duty.
+ *
+ * @property {string} id - The ID of the guard.
+ *
+ * @property {number} start_time - The timestamp when the guard starts.
+ *
+ * @property {number} end_time - The timestamp when the guard shift ends.
+ *
+ * @property {Volunteer[]} volunteers - The volunteers assigned to this guard.
+ */
 @ObjectType()
 export class Guard {
   @Field()
@@ -21,6 +34,17 @@ export class Guard {
   observations: string;
 }
 
+/**
+ * Mongoose schema for the {@link Guard} GraphQL type.
+ *
+ * @property {Date} start_time - The timestamp when the guard starts.
+ *
+ * @property {Date} end_time - The timestamp when the guard shift ends.
+ *
+ * @property {ObjectId[]} volunteers - The ids of the volunteers assigned to this guard.
+ *
+ * @property {string} [observations] - Any observations about the guard.
+ */
 export const GuardSchema = new Schema(
   {
     start_time: Date,
@@ -36,6 +60,22 @@ export const GuardSchema = new Schema(
   { timestamps: true }
 );
 
+/**
+ * Represents a guard in the MongoDB database.
+ *
+ * @property {ObjectId} _id - The ID of the guard.
+ *
+ * @property {number} start_time - The timestamp when the guard starts.
+ *
+ * @property {number} end_time - The timestamp when the guard shift ends.
+ *
+ * @property {Volunteer[]} volunteers - The volunteers assigned to this guard.
+ *
+ * @property {boolean} disabled - Whether the guard is disabled or not.
+ *
+ * @property {string} [observations] - Any observations about the guard.
+ */
+@ObjectType()
 export class GuardModel extends Document {
   _id: ObjectId;
   start_time: number;

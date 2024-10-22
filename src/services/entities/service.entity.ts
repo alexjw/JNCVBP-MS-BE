@@ -1,4 +1,4 @@
-import { ObjectType, Field, ID } from "@nestjs/graphql";
+import { ObjectType, Field } from "@nestjs/graphql";
 import { Schema, Document } from "mongoose";
 import { Volunteer } from "../../volunteers/entities/volunteer.entity";
 import { SubType } from "../../sub-type/entities/sub-type.entity";
@@ -6,6 +6,11 @@ import { FireCause } from "../../fire-cause/entities/fire-cause.entity";
 import { FireClass } from "../../fire-class/entities/fire-class.entity";
 import { ObjectId } from "mongodb";
 
+/**
+ * A GraphQL type representing a quantity detail.
+ *
+ * A quantity detail is used when creating or updating a quantity of certain affected entities.
+ */
 @ObjectType()
 export class Quantity1044 {
   @Field({ nullable: true })
@@ -15,6 +20,11 @@ export class Quantity1044 {
   quantity: number;
 }
 
+/**
+ * A GraphQL type representing a resource used.
+ *
+ * A resource may be used when creating or updating a service.
+ */
 @ObjectType()
 export class ResourceUsed {
   @Field({ nullable: true })
@@ -27,6 +37,11 @@ export class ResourceUsed {
   quantity: number;
 }
 
+/**
+ * A GraphQL type representing a service.
+ *
+ * A service is a mission that has been performed by the fire department.
+ */
 @ObjectType()
 export class Service {
   @Field({ nullable: true })
@@ -153,6 +168,12 @@ export class Service {
   rescue_type: string;
 }
 
+/**
+ * A service is a mission that has been performed by the fire department.
+ *
+ * It contains all the information about the service, like the volunteers
+ * that attended the service, the description of the service, etc.
+ */
 export const ServiceSchema = new Schema(
   {
     description: String, // Shared with all
@@ -191,7 +212,6 @@ export const ServiceSchema = new Schema(
       _id: { type: Schema.Types.ObjectId, ref: "FireCause" },
     },
     possible_cause_other_description: String,
-    //: String,
     fire_class: [
       {
         _id: { type: Schema.Types.ObjectId, ref: "FireClass" },
@@ -236,6 +256,10 @@ export const ServiceSchema = new Schema(
   return this._id.toHexString();
 });*/
 
+/**
+ * ServiceModel is a class that represents a service in the database.
+ * It contains the properties of a service, such as the description, volunteers, date, call time, type, departure time, arrival time, withdrawal time, locality, neighborhood, address, place, alerted by, phone, received by, crew, officer in charge, sub type, fire type, magnitude, damage, vehicles used, other units, other occurrences, police force in charge, judge in charge, damage 10.41, quantities 10.44, involved elements, magnitude 10.41, resources used, rescue type, and disabled.
+ */
 export class ServiceModel extends Document {
   _id: ObjectId;
 

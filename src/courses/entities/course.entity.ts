@@ -1,8 +1,17 @@
-import { ObjectType, Field, Int } from "@nestjs/graphql";
+import { ObjectType, Field } from "@nestjs/graphql";
 import { Document, Schema } from "mongoose";
-import { Volunteer, VolunteerModel } from "../../volunteers/entities/volunteer.entity";
+import { Volunteer } from "../../volunteers/entities/volunteer.entity";
 import { ObjectId } from "mongodb";
 
+/**
+ * Represents a course detail.
+ *
+ * This class is used to represent the individual scores of a volunteer.
+ *
+ * @property {string} score - The score of the Volunteer for this course.
+ *
+ * @property {Volunteer} volunteer - The volunteer associated that earned the score.
+ */
 @ObjectType()
 export class CourseDetail {
   @Field()
@@ -12,6 +21,17 @@ export class CourseDetail {
   volunteer: Volunteer;
 }
 
+/**
+ * A course is a way to group a set of volunteers together for a certain
+ * training or activity.
+ *
+ * @property {string} description - The description of the course.
+ *
+ * @property {Date} date - The date of the course.
+ *
+ * @property {CourseDetail[]} details - The details of the course, with the
+ * score of each volunteer.
+ */
 @ObjectType()
 export class Course {
   @Field()
@@ -27,6 +47,18 @@ export class Course {
   details: CourseDetail[];
 }
 
+/**
+ * The Mongoose schema for the Course model.
+ *
+ * @property {string} description - The description of the course.
+ *
+ * @property {Date} date - The date of the course.
+ *
+ * @property {CourseDetail[]} details - The details of the course, with the
+ * score of each volunteer.
+ *
+ * @property {boolean} disabled - Whether this course is disabled.
+ */
 export const CourseSchema = new Schema(
   {
     description: String,
@@ -44,6 +76,22 @@ export const CourseSchema = new Schema(
   { timestamps: true }
 );
 
+/**
+ * Represents a course in the MongoDB database.
+ *
+ * @property {ObjectId} _id - The ID of the course.
+ *
+ * @property {string} description - The description of the course.
+ *
+ * @property {Date} date - The date of the course.
+ *
+ * @property {string} score - The score of the course.
+ *
+ * @property {CourseDetail[]} details - The details of the course, with the
+ * score of each volunteer.
+ *
+ * @property {boolean} disabled - Whether this course is disabled.
+ */
 export class CourseModel extends Document {
   _id: ObjectId;
   description: string;
