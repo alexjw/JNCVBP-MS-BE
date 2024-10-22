@@ -8,6 +8,12 @@ import { TrainingModel } from "./entities/training.entity";
 import * as moment from "moment";
 const _ = require("lodash");
 
+/**
+ * TrainingsService is responsible for creating, retrieving, updating and deleting Trainings from the database.
+ *
+ * @export
+ * @class TrainingsService
+ */
 @Injectable()
 export class TrainingsService {
   constructor(@InjectModel("Training") private model: Model<TrainingModel>) {}

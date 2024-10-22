@@ -1,14 +1,18 @@
 import { Injectable, HttpException, HttpStatus } from "@nestjs/common";
 import * as bcrypt from "bcrypt";
-import { JwtService } from "@nestjs/jwt";
 import { CreateUserInput } from "./dto/create-user.input";
 import { UpdateUserInput } from "./dto/update-user.input";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { User, UserModel } from "./entities/user.entity";
-import * as moment from "moment";
 const _ = require("lodash");
 
+/**
+ * UsersService is responsible for creating, retrieving, updating and deleting Users from the database.
+ *
+ * @export
+ * @class UsersService
+ */
 @Injectable()
 export class UsersService {
   constructor(@InjectModel("User") private model: Model<UserModel>) {}

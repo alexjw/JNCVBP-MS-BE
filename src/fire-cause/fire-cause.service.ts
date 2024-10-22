@@ -5,6 +5,12 @@ import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { FireCauseModel } from "./entities/fire-cause.entity";
 
+/**
+ * FireCauseService is responsible for creating, retrieving, updating and deleting Fire Causes from the database.
+ *
+ * @export
+ * @class FireCauseService
+ */
 @Injectable()
 export class FireCauseService {
   constructor(@InjectModel("FireCause") private model: Model<FireCauseModel>) {}

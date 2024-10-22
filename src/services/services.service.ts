@@ -7,6 +7,12 @@ import { ServiceModel } from "./entities/service.entity";
 import * as moment from "moment";
 const _ = require("lodash");
 
+/**
+ * ServicesService is responsible for creating, retrieving, updating and deleting Services from the database.
+ *
+ * @export
+ * @class ServicesService
+ */
 @Injectable()
 export class ServicesService {
   constructor(@InjectModel("Service") private model: Model<ServiceModel>) {}

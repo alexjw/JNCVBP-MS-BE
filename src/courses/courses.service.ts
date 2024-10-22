@@ -7,6 +7,12 @@ import { CourseModel } from "./entities/course.entity";
 import * as moment from "moment";
 const _ = require("lodash");
 
+/**
+ * CoursesService is responsible for creating, retrieving, updating and deleting courses from the database.
+ *
+ * @export
+ * @class CoursesService
+ */
 @Injectable()
 export class CoursesService {
   constructor(@InjectModel("Course") private model: Model<CourseModel>) {}

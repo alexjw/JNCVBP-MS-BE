@@ -5,6 +5,12 @@ import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { SubTypeModel } from "./entities/sub-type.entity";
 
+/**
+ * SubTypeService is responsible for creating, retrieving, updating and deleting Sub-types from the database.
+ *
+ * @export
+ * @class SubTypeService
+ */
 @Injectable()
 export class SubTypeService {
   constructor(@InjectModel("SubType") private model: Model<SubTypeModel>) {}

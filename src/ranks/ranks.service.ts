@@ -1,12 +1,18 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
-import { DocumentQuery, Model } from "mongoose";
+import { Model } from "mongoose";
 
 import { Rank, RankModel } from "./entities/rank.entity";
 
 import { CreateRankInput } from "./dto/create-rank.input";
 import { UpdateRankInput } from "./dto/update-rank.input";
 
+/**
+ * RanksService is responsible for creating, retrieving, updating and deleting Ranks from the database.
+ *
+ * @export
+ * @class RanksService
+ */
 @Injectable()
 export class RanksService {
   constructor(@InjectModel("Rank") private rankModel: Model<RankModel>) {}

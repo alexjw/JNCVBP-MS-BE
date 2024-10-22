@@ -7,6 +7,12 @@ import { VolunteerModel } from "./entities/volunteer.entity";
 const _ = require("lodash");
 import * as moment from "moment/moment";
 
+/**
+ * VolunteersService is responsible for creating, retrieving, updating and deleting Volunteers from the database.
+ *
+ * @export
+ * @class VolunteersService
+ */
 @Injectable()
 export class VolunteersService {
   constructor(@InjectModel("Volunteer") private model: Model<VolunteerModel>) {}

@@ -7,6 +7,12 @@ import { FireCauseService } from "../fire-cause/fire-cause.service";
 import { CODES } from "../utils/Constants";
 const _: _.LoDashStatic = require("lodash");
 
+/**
+ * ReportsService is responsible for generating reports, they are not saved in the Database.
+ *
+ * @export
+ * @class ReportsService
+ */
 @Injectable()
 export class ReportsService {
   constructor(

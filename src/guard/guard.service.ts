@@ -7,6 +7,12 @@ import { GuardModel } from "./entities/guard.entity";
 import * as moment from "moment";
 const _ = require("lodash");
 
+/**
+ * GuardService is responsible for creating, retrieving, updating and deleting Guards from the database.
+ *
+ * @export
+ * @class GuardService
+ */
 @Injectable()
 export class GuardService {
   constructor(@InjectModel("Guard") private model: Model<GuardModel>) {}

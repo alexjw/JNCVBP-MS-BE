@@ -7,6 +7,12 @@ import { EventModel } from "./entities/event.entity";
 import * as moment from "moment";
 const _ = require("lodash");
 
+/**
+ * EventsService is responsible for creating, retrieving, updating and deleting events from the database.
+ *
+ * @export
+ * @class EventsService
+ */
 @Injectable()
 export class EventsService {
   constructor(@InjectModel("Event") private model: Model<EventModel>) {}

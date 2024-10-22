@@ -7,6 +7,12 @@ import { DutyModel } from "./entities/duty.entity";
 import { CreateDutyInput } from "./dto/create-duty.input";
 import { UpdateDutyInput } from "./dto/update-duty.input";
 
+/**
+ * DutiesService is responsible for creating, retrieving, updating and deleting duties from the database.
+ *
+ * @export
+ * @class DutiesService
+ */
 @Injectable()
 export class DutiesService {
   constructor(@InjectModel("Duty") private dutyModel: Model<DutyModel>) {}
