@@ -13,6 +13,16 @@ import { Seeder } from "./seeder";
 
 const config = require("../../config.js");
 
+/**
+ * SeederModule is the main module for the seeders.
+ *
+ * This module imports the necessary dependencies for the seeders.
+ *
+ * It imports the mongoose module for the database and the GraphQLModule to create the GraphQL schema.
+ * It provides the Seeder service, which is able to seed the database with the data from the seeders.
+ *
+ * @module SeederModule
+ */
 @Module({
   imports: [
     GraphQLModule.forRoot({ autoSchemaFile: true, installSubscriptionHandlers: true }),
