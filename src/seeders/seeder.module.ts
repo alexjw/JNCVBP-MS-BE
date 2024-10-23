@@ -10,6 +10,7 @@ import { RankSeederModule } from "./rank/ranks.module";
 import { VolunteerSeederModule } from "./volunteer/volunteers.module";
 
 import { Seeder } from "./seeder";
+import { UserSeederModule } from "./user/users.module";
 
 const config = require("../../config.js");
 
@@ -33,6 +34,7 @@ const config = require("../../config.js");
     SubTypeSeederModule,
     RankSeederModule,
     VolunteerSeederModule,
+    UserSeederModule,
   ],
   providers: [Logger, Seeder],
 })

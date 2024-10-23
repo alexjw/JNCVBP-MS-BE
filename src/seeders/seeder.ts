@@ -6,6 +6,7 @@ import { FireClassSeederService } from "./fire-class/fire-classes.services";
 import { SubTypeSeederService } from "./sub-type/sub-types.services";
 import { RankSeederService } from "./rank/ranks.services";
 import { VolunteerSeederService } from "./volunteer/volunteers.services";
+import { UserSeederService } from "./user/users.services";
 
 /**
  * Seeder is responsible for seeding the database with data.
@@ -18,6 +19,7 @@ import { VolunteerSeederService } from "./volunteer/volunteers.services";
  * - {@link FireClassSeederService}
  * - {@link SubTypeSeederService}
  * - {@link VolunteerSeederService}
+ * - {@link UserSeederService}
  *
  * The seeders are injected into the Seeder and then the seed method is called,
  * which calls the seed method on each of the seeders.
@@ -31,7 +33,8 @@ export class Seeder {
     private readonly fireCauseService: FireCauseSeederService,
     private readonly fireClassService: FireClassSeederService,
     private readonly subTypeService: SubTypeSeederService,
-    private readonly volunteerService: VolunteerSeederService
+    private readonly volunteerService: VolunteerSeederService,
+    private readonly usersService: UserSeederService
   ) {}
 
   /**
@@ -49,6 +52,7 @@ export class Seeder {
     await this.seedService(this.fireCauseService.create(), "Fire Causes");
     await this.seedService(this.fireClassService.create(), "Fire Classes");
     await this.seedService(this.subTypeService.create(), "Sub Types");
+    await this.seedService(this.usersService.create(), "Users");
 
     // set first rank 'Captain' as volunteers rank
     ranks.then((ranks) => {
