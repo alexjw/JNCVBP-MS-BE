@@ -6,6 +6,6 @@ FROM mongo:5.0 as Builder
 # Copy the initialization script into the container
 COPY init-mongo.js /docker-entrypoint-initdb.d/
 
-#EXPOSE 27017
+EXPOSE 27017
 
 CMD ["mongod"]
