@@ -1,14 +1,12 @@
 FROM node:18 as builder
+WORKDIR '/be'
 
-WORKDIR /be
-
-# Copy package.json and package-lock.json first to leverage Docker cache
 COPY package*.json ./
 
 RUN npm install
+COPY . .
 
-COPY ./ ./
+RUN npm run build
+EXPOSE 3000
 
-CMD ["npm", "start"]
-
-
+CMD ["npm", "run", "start:prod"]
